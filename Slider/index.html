@@ -79,6 +79,33 @@
           <div class="dot"></div>
         </div>
       </div>
+
+      <form action="" class="calc-order">
+        <label for="">Рассчёт стоимости фотосета:</label>
+        <input type="text" id="order-men" placeholder="Количество человек" />
+        <input
+          type="text"
+          id="order-photos"
+          placeholder="Количество фотографий"
+        />
+        <fieldset id="order-genre-field">
+          <legend id="order-genre-legend" for="order-genre">
+            Выберите жанр:
+          </legend>
+          <select id="order-genre">
+            <option value="1">Черно-белая</option>
+            <option value="2">Цветная</option>
+            <option value="3">Минимализм</option>
+          </select>
+        </fieldset>
+
+        <fieldset id="order-calc-field">
+          <legend id="order-calc-legend" for="order-calc">
+            Итоговая сумма:
+          </legend>
+          <input type="text" readonly id="order-calc" />
+        </fieldset>
+      </form>
     </main>
 
     <script src="index.js"></script>
