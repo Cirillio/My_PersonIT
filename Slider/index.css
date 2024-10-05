@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  &:focus {
+    outline: 2px solid black;
+    padding: 2px;
+  }
 }
 
 body {
@@ -14,6 +18,7 @@ body {
 }
 
 header {
+  z-index: 1;
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -48,6 +53,7 @@ nav li {
   justify-content: center;
   align-items: center;
   background-color: #b6b6b63d;
+  cursor: pointer;
 }
 
 nav a {
@@ -181,6 +187,7 @@ main {
 .calc-order {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 400px;
   padding: 20px;
   gap: 10px;
@@ -230,6 +237,13 @@ main {
   }
 }
 
+#order-calc-field {
+  width: 70%;
+  input {
+    width: 100%;
+  }
+}
+
 #order-calc-field,
 #order-genre-field {
   border: none;
@@ -256,4 +270,195 @@ main {
 
 #order-genre option {
   cursor: pointer;
+}
+
+#orderBlock {
+  position: fixed;
+  z-index: 999;
+
+  opacity: 1;
+  transition: 0.1s ease-in;
+
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5004202364539565) 0%,
+    rgba(0, 0, 0, 0.5) 25%,
+    rgba(100, 100, 100, 0.5) 25%,
+    rgba(100, 100, 100, 0.5) 75%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+.photoset-order {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 360px;
+
+  background: #bdbdbd;
+  padding: 20px;
+  border-radius: 5px;
+
+  position: relative;
+
+  align-items: center;
+}
+
+#close-photoset {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: none;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition: 0.1s ease-in;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+
+  &:hover {
+    background-color: #cecece;
+  }
+}
+
+.photoset-order h2 {
+  color: #1d1d1d;
+  text-align: center;
+  font-weight: 200;
+  text-transform: lowercase;
+  letter-spacing: 2px;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.672));
+}
+
+.photoset-order form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.photoset-order form fieldset {
+  width: 100%;
+  border: none;
+}
+
+.photoset-order form fieldset legend {
+  font-size: 16px;
+  font-weight: 200;
+}
+.photoset-order form fieldset input {
+  width: 100%;
+  background: #d6d6d6;
+  border: none;
+  border-bottom: 2px solid #1d1d1d;
+  padding: 5px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.photoset-order form label {
+  display: flex;
+  align-items: center;
+
+  user-select: none;
+  gap: 5px;
+}
+
+.photoset-order form label input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #1b1b1b80;
+  border-radius: 2px;
+
+  transition: 0.1s ease-in;
+  position: relative;
+  &:checked {
+    outline: none;
+    background-color: #1d1d1d;
+    color: #000;
+
+    &::after {
+      content: "✓";
+      display: block;
+      position: absolute;
+      color: #ffffff;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-55%) translateX(-50%);
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+#send-order-label {
+  position: relative;
+  width: 150px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  background-color: #dedede;
+  font-size: 16px;
+  font-weight: 100;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    transform: translateY(-100%) translateX(0%);
+    width: 10px;
+    height: 10px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    transform: translateY(100%) translateX(0%);
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+  }
+}
+
+#send-order {
+  cursor: pointer;
+
+  position: absolute;
+  width: 150px;
+  height: 22px;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  &:focus {
+    appearance: none;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+  }
 }

@@ -8,16 +8,55 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <title>Slider</title>
+    <title>Street Photo</title>
   </head>
   <body>
+    <div id="orderBlock">
+      <div class="photoset-order">
+        <button id="close-photoset">X</button>
+        <h2>Заказ фотосета</h2>
+
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Ваше имя</legend>
+            <input id="photoset-name" type="text" />
+          </fieldset>
+
+          <fieldset>
+            <legend>Номер телефона</legend>
+            <input id="photoset-phone" type="text" />
+          </fieldset>
+
+          <fieldset>
+            <legend>Количество человек</legend>
+            <input id="photoset-men" type="text" />
+          </fieldset>
+
+          <fieldset>
+            <legend>Количество фотографий</legend>
+            <input id="photoset-photos" type="text" />
+          </fieldset>
+
+          <label>
+            <input id="remember-me" type="checkbox" />
+            Запомнить меня
+          </label>
+
+          <label for="send-order" id="send-order-label">
+            <input id="send-order" type="submit" value="" />
+            Отправить заявку
+          </label>
+        </form>
+      </div>
+    </div>
+
     <header>
       <h1>Уличная фотография</h1>
       <nav>
         <ul>
           <li><a href="#">Галерея</a></li>
           <li><a href="#">О нас</a></li>
-          <li><a href="#">Фотосет</a></li>
+          <li id="photoset"><a href="#">Фотосет</a></li>
         </ul>
       </nav>
     </header>

@@ -191,3 +191,47 @@ orderGenre.addEventListener("input", function () {
     orderCalc.value = total;
   }
 });
+
+let photoset = document.querySelector("#photoset"),
+  photosetOrder = document.querySelector("#orderBlock");
+
+photoset.addEventListener("click", () => {
+  photosetOrder.style.display = "flex";
+  setTimeout(() => {
+    photosetOrder.style.opacity = "1";
+  }, 1);
+});
+
+photosetOrder.addEventListener("click", (e) => {
+  if (e.target.id === "close-photoset" || e.target.id === "orderBlock") {
+    photosetOrder.style.opacity = "0";
+    setTimeout(() => {
+      photosetOrder.style.display = "none";
+    }, 100);
+  }
+});
+
+let photosetName = document.querySelector("#photoset-name"),
+  photosetMen = document.querySelector("#photoset-men"),
+  photosetPhotos = document.querySelector("#photoset-photos"),
+  rememberMe = document.querySelector("#remember-me"),
+  sendOrder = document.querySelector("#send-order"),
+  orderForm = document.querySelector(".photoset-order form"),
+  remembered = false;
+if (localStorage.getItem("remembered") === "true") {
+  rememberMe.checked = true;
+  remembered = true;
+} else rememberMe.checked = false;
+
+rememberMe.addEventListener("click", (e) => {
+  if (!remembered) remembered = true;
+  else remembered = false;
+  console.log(remembered);
+
+  localStorage.setItem("remembered", remembered);
+});
+
+orderForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log(e.target);
+});
