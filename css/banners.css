@@ -1,0 +1,56 @@
+@media (min-width: 640px) {
+  .banners {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .banners {
+    display: flex;
+  }
+}
+
+.banners {
+  flex-direction: column;
+  width: 20vw;
+  overflow: hidden;
+  flex: 1 1 auto;
+  justify-content: space-evenly;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+.banners img {
+  pointer-events: none;
+  user-select: none;
+  width: 300px;
+  margin: 100px 0;
+}
+
+.banners img:nth-child(1n) {
+  animation: slideIn 10s linear infinite;
+}
+
+.banners img:nth-child(2n) {
+  animation: slideIn 5s linear infinite;
+}
+
+.banners img:nth-child(3n) {
+  animation: slideIn 15s linear infinite;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

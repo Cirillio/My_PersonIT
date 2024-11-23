@@ -1,0 +1,144 @@
+body {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+@media (min-width: 640px) {
+  .main {
+    width: 100%;
+  }
+
+  .container__block {
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .container__block--swiper {
+    height: 200px;
+    width: 100%;
+  }
+  .container__block--img {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 1060px) {
+  .container__block {
+    justify-content: space-between;
+    flex-direction: row;
+    height: 260px;
+    gap: 0;
+  }
+
+  .container__block--swiper {
+    height: 100%;
+    width: fit-content;
+  }
+  .container__block--img {
+    height: 100%;
+    width: fit-content;
+    img {
+      height: 100%;
+      width: fit-content;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .main {
+    width: 1170px;
+    flex: 0 0 auto;
+  }
+}
+
+.main {
+  overflow: unset;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 auto;
+  background-color: rgba(0 0 0 / 0.5);
+  z-index: 1;
+}
+
+.main__container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.container__block {
+  display: flex;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.container__block__info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1 1 auto;
+}
+
+.container__block--swiper {
+  display: flex;
+}
+
+.container__block--img {
+  display: flex;
+  overflow: hidden;
+
+  align-items: center;
+  justify-content: center;
+  img {
+    scale: 125%;
+  }
+}
+
+.container__block--subtitle {
+  width: 100%;
+  align-items: center;
+  background: var(--bk);
+  color: var(--yel);
+  font-family: var(--text);
+  font-size: 24px;
+  font-weight: 400;
+  flex: 1 1 auto;
+}
+
+.container__block__desc {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  background: var(--red);
+  border-top: 5px solid var(--wt);
+  padding: 10px 20px;
+}
+
+.container__block__desc p {
+  color: var(--wt);
+  font-family: var(--text);
+  font-size: 16px;
+}
+
+.container__block__info--back {
+  display: none;
+  width: 470px;
+  /* height: 260px; */
+  background: var(--red);
+  border-top: 5px solid var(--wt);
+  padding: 10px 20px;
+}

@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --yel: #fbf201;
+  --red: #fe003e;
+  --wt: #ffffff;
+  --bk: #000000;
+  --prpl1: #a52db3;
+  --prpl2: #711d99;
+  --prpl3: #3b0a4c;
+
+  --title: Roboto Mono;
+  --text: Source Code Pro;
+}
+
+html {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.line {
+  width: 100%;
+  height: 5px;
+  background: var(--red);
+  margin: 40px 0;
+}
