@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="css/header.css" />
   </head>
   <body>
+    <audio
+      id="ambient-music"
+      autoplay
+      loop
+      src="src/Stilz - Light Years.mp3"
+    ></audio>
     <video
       autoplay
       muted
@@ -60,8 +66,11 @@
             <li class="header__nav--item">
               <a class="header__nav--link" href="philosophy.html">Философия</a>
             </li>
-            <li class="header__nav--item">
-              <a class="header__nav--link" href="#">Роль в обществе</a>
+            <li class="header__nav--item" id="ambient-btn">
+              <a class="header__nav--link" href="#"
+                >Фоновая музыка
+                <img id="ambient" src="src/ambientOn.svg" alt="ambientbtn"
+              /></a>
             </li>
           </ul>
         </nav>
@@ -72,7 +81,7 @@
         <div class="container__block">
           <div class="container__block__info">
             <h4 class="container__block--subtitle">
-              Киберпанк - это не просто жанр<br />Это образ мышления
+              Cyberpunk - это не просто жанр<br />Это образ мышления
             </h4>
             <div class="container__block__desc">
               <p>
@@ -87,14 +96,144 @@
           </div>
 
           <div class="container__block--swiper">
-            <button><</button>
+            <button class="swiper-back"><</button>
             <div class="container__block--img">
               <img src="src/desc1.jpg" alt="desc1" />
             </div>
-            <button>></button>
+            <button class="swiper-next">></button>
+          </div>
+        </div>
+
+        <!--  -->
+        <div class="img--between">
+          <img src="/src/restrictedarea.png" alt="restrictedarea" />
+        </div>
+        <!--  -->
+        <div class="container__block--title">
+          <h3>Что такое киберпанк</h3>
+        </div>
+        <!--  -->
+        <div class="container__block">
+          <div class="container__block__info">
+            <h4 class="container__block--subtitle">
+              Cyberpunk: Город света и тени
+            </h4>
+
+            <div class="container__block__desc">
+              <p>
+                Cyberpunk - это не просто мрачный футуристический жанр. Это
+                яркая и противоречивая реальность, где технологии и человеческая
+                природа вступают в драматическую и неожиданную схватку. Это мир
+                мегаполисов, подсвеченных неоновыми знаками, где кибернетические
+                импланты становятся частью тела, а киберпространство - новой
+                реальностью.
+              </p>
+            </div>
+          </div>
+          <div class="container__block--swiper">
+            <button class="swiper-back"><</button>
+            <div class="container__block--img">
+              <img src="src/desc2.jpg" alt="desk2" />
+            </div>
+            <button class="swiper-next">></button>
+          </div>
+        </div>
+        <div class="img--between">
+          <img src="/src/serial.png" alt="serial" />
+        </div>
+        <div class="container__block--title">
+          <h3>Почему киберпанк актуален</h3>
+        </div>
+        <div class="container__block">
+          <div class="container__block__info">
+            <h4 class="container__block--subtitle">
+              Cyberpunk: Пророчество, ставшее реальностью
+            </h4>
+
+            <div class="container__block__desc">
+              <p>
+                В 1980-х годах cyberpunk казался далеким будущим. Но сегодня,
+                когда искусственный интеллект, биотехнологии и виртуальная
+                реальность становятся неотъемлемой частью нашей жизни, мы
+                начинаем видеть в нем отражение нашего собственного мира.
+                Cyberpunk не просто жанр научной фантастики. Он предлагает
+                провокационные вопросы о нашем отношении к технологиям, о
+                социальных изменениях и о том, что означает быть человеком в
+                эпоху цифровых трансформаций.
+              </p>
+            </div>
+          </div>
+          <div class="container__block--swiper">
+            <button class="swiper-back"><</button>
+            <div class="container__block--img">
+              <img src="src/desc3.jpg" alt="desc3" />
+            </div>
+            <button class="swiper-next">></button>
+          </div>
+        </div>
+        <div class="img--between">
+          <img src="/src/highvoltage.png" alt="highvoltage" />
+        </div>
+        <div class="container__block--title">
+          <h3>Влияние на мир</h3>
+        </div>
+        <div class="container__block">
+          <div class="container__block__info">
+            <h4 class="container__block--subtitle">
+              Cyberpunk: Вдохновение будущего
+            </h4>
+
+            <div class="container__block__desc">
+              <p>
+                Cyberpunk влияет на нашу культуру не только с помощью
+                завораживающего визуала. Его идеи находят отражение в фильмах,
+                литературе, искусстве, музыке и видеоиграх. "Бегущий по лезвию",
+                "Матрица", "Чужой" - все они во многом вдохновлены cyberpunk и
+                дают нам увидеть возможные пути развития нашего мира.
+              </p>
+            </div>
+          </div>
+          <div class="container__block--swiper">
+            <button class="swiper-back"><</button>
+            <div class="container__block--img">
+              <img src="src/desc4.jpg" alt="desk4" />
+            </div>
+            <button class="swiper-next">></button>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="container__cite">
+          <div class="container__cite--text">
+            Цифровое пространство - это новая дикая местность, где власть
+            определяется информацией, а границы размыты.
+          </div>
+          <div class="container__cite--author">Уильям Гибсон</div>
+          <div class="container__cite--author--desc">
+            Уильям Гибсон — американо-канадский писатель-фантаст, один из
+            основоположников жанра киберпанк.
+          </div>
+          <div class="container__cite--img">
+            <img src="src/cite.jpg" alt="cite" />
           </div>
         </div>
       </div>
+
+      <footer class="footer">
+        <div class="footer__anim">
+          <img src="src/DANGER_SIGN3_1.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_2.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_3.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_4.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_1.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_2.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_3.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_4.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_1.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_2.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_3.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_4.png" alt="DANGERSIGN" />
+        </div>
+      </footer>
     </main>
     <div class="banners">
       <img src="src/DANGER_SIGN19_1.png" alt="dangerbanner" />
@@ -108,13 +247,26 @@
     </div>
 
     <script>
-      "use strict";
+      document.addEventListener("DOMContentLoaded", () => {
+        const music = document.querySelector("#ambient-music"),
+          ambient = document.getElementById("ambient"),
+          ambientBtn = document.querySelector("#ambient-btn");
+        music.volume = 0.05;
 
-      const menuButton = document.querySelector(".header__logo--btn");
+        ambientBtn.addEventListener("click", function () {
+          music.muted = !music.muted;
+          music.muted
+            ? (ambient.src = "src/ambientOff.svg")
+            : (ambient.src = "src/ambientOn.svg");
+        });
 
-      menuButton.addEventListener("click", () => {
-        const menu = document.querySelector(".menu");
-        menu.classList.toggle("menu--active");
+        ///////
+        const menuButton = document.querySelector(".header__logo--btn");
+
+        menuButton.addEventListener("click", () => {
+          const menu = document.querySelector(".menu");
+          menu.classList.toggle("menu--active");
+        });
       });
     </script>
   </body>

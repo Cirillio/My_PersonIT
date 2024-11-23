@@ -104,6 +104,12 @@
   width: 100%;
   font-family: var(--text);
   font-size: 16px;
+  gap: 5px;
+}
+
+#ambient {
+  height: 18px;
+  filter: invert(1);
 }
 
 .header__nav--item {
