@@ -28,3 +28,7 @@ html {
   height: 5px;
   background: var(--red);
 }
+
+.background {
+  position: fixed;
+}
