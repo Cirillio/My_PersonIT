@@ -4,11 +4,107 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cyberpunk: traum evolution</title>
-
-    <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/philosophy.css" />
-    <link rel="stylesheet" href="css/menu.css" />
-    <link rel="stylesheet" href="css/header.css" />
   </head>
-  <body></body>
+  <body>
+    <audio
+      id="ambient-music"
+      autoplay
+      loop
+      src="src/Stilz - Light Years.mp3"
+    ></audio>
+    <video
+      autoplay
+      muted
+      loop
+      class="background"
+      src="src/lv_0_20241104222208.mp4"
+    ></video>
+
+    <div class="menu--container">
+      <div class="menu">
+        <ul>
+          <li class="menu__item">Начало</li>
+          <li class="menu__item">Что такое киберпанк</li>
+          <li class="menu__item">Почему киберпанк актуален</li>
+          <li class="menu__item">Влияние на мир</li>
+        </ul>
+      </div>
+    </div>
+
+    <main class="main">
+      <header class="header">
+        <div class="header__logo">
+          <button class="header__logo--btn">
+            <div class="header__logo--btn--line"></div>
+            <div class="header__logo--btn--line"></div>
+            <div class="header__logo--btn--line"></div>
+          </button>
+          <div class="header__logo--logo">
+            <h2>Cyberpunk</h2>
+            <h1>Эволюция мечты</h1>
+          </div>
+        </div>
+        <nav class="header__nav">
+          <ul>
+            <li class="header__nav--item">
+              <a class="header__nav--link" href="index.html">Главная</a>
+            </li>
+            <li class="header__nav--item">
+              <a class="header__nav--link" href="philosophy.html">Философия</a>
+            </li>
+            <li class="header__nav--item" id="ambient-btn">
+              <a class="header__nav--link" href="#"
+                >Фоновая музыка
+                <img id="ambient" src="src/ambientOn.svg" alt="ambientbtn"
+              /></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="neon--left">
+        <div class="pulse">全 く の 空 虚 の 空 虚 の 中 で</div>
+      </div>
+
+      <div class="wrapper">
+        <div class="main__container"></div>
+      </div>
+
+      <div class="neon--right">
+        <div class="pulse">全 く の 空 虚 の 空 虚 の 中 で</div>
+      </div>
+
+      <footer class="footer">
+        <div class="footer__anim">
+          <img src="src/DANGER_SIGN3_1.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_2.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_3.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_4.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_1.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_2.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_3.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_4.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_1.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_2.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_3.png" alt="DANGERSIGN" />
+          <img src="src/DANGER_SIGN3_4.png" alt="DANGERSIGN" />
+        </div>
+        <div class="footer__container">
+          <div class="footer__container--logo">
+            <img src="src/favicon.ico" alt="footericon" />
+            <h5>© Cyberpunk: traum evolution</h5>
+            <p>2024 год</p>
+          </div>
+          <span>
+            Работа выполнена в рамках учебного итогового проекта модуля "CSS,
+            CSS3" на курсе "Веб-программирование" в ТГАСУ заочной формы обучения
+            по программе профессиональной переподготовки.
+          </span>
+        </div>
+      </footer>
+
+      <script src="script.js"></script>
+    </main>
+  </body>
 </html>
