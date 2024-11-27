@@ -57,7 +57,7 @@
 
 .header__logo--logo {
   user-select: none;
-  font-family: CLURBANTIK;
+  font-family: var(--logo);
 
   display: flex;
   flex-direction: column;

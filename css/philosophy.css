@@ -1,4 +1,7 @@
 @import "base.css";
+@import "menu.css";
+@import "header.css";
+@import "footer.css";
 
 .wrapper {
   width: 80%;

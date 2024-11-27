@@ -1,5 +1,8 @@
 @import "base.css";
 @import "banners.css";
+@import "menu.css";
+@import "header.css";
+@import "footer.css";
 
 .main__container {
   margin: 0 5%;
