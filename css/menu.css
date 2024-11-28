@@ -1,14 +1,3 @@
-@media (min-width: 640px) {
-  .menu--container {
-    display: none;
-  }
-}
-@media (min-width: 1580px) {
-  .menu--container {
-    display: flex;
-  }
-}
-
 .menu--container {
   position: fixed;
 
@@ -91,4 +80,15 @@
 .menu__item:hover::before {
   top: 0;
   height: 100%;
+}
+
+@media (min-width: 340px) {
+  .menu--container {
+    display: none;
+  }
+}
+@media (min-width: 1580px) {
+  .menu--container {
+    display: flex;
+  }
 }

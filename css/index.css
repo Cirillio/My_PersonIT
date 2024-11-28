@@ -23,7 +23,7 @@
   margin: 0 auto;
 
   h3 {
-    font-size: 24px;
+    font-size: 2rem;
     font-family: var(--title);
     text-decoration: underline;
   }
@@ -96,7 +96,7 @@
   background: var(--bk);
   color: var(--yel);
   font-family: var(--text);
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
   flex: 1 1 auto;
 }
@@ -115,7 +115,7 @@
 
   color: var(--wt);
   font-family: var(--text);
-  font-size: 16px;
+  font-size: 1.2rem;
   text-align: justify;
 }
 
@@ -152,10 +152,9 @@
 }
 
 .container__cite--text {
-  top: 50%;
+  top: 45%;
   left: 10%;
-  width: 380px;
-  font-size: 20px;
+  width: 28rem;
   font-family: var(--text);
   text-shadow: 1px 2px 5px var(--bk);
 }
@@ -184,7 +183,6 @@
 .container__cite--author {
   left: 10%;
   bottom: 10%;
-  font-size: 24px;
   text-decoration: underline;
   font-family: var(--title);
 }
@@ -194,10 +192,9 @@
 }
 
 .container__cite--author--desc {
-  bottom: -10%;
+  bottom: -15%;
   transition: 0.1s ease-in;
   font-family: var(--text);
-  font-size: 12px;
 }
 
 .container__cite--img {
@@ -225,7 +222,7 @@
 }
 
 /* Телефон */
-@media (min-width: 640px) {
+@media (min-width: 340px) {
   .container__block {
     align-items: center;
     flex-direction: column;
@@ -245,6 +242,31 @@
     img {
       width: 100%;
     }
+  }
+
+  .container__cite--text {
+    font-size: 1rem;
+  }
+
+  .container__cite--author {
+    font-size: 1.1rem;
+  }
+
+  .container__cite--author--desc {
+    font-size: 0.7rem;
+  }
+}
+
+/* Оптимальные значения */
+@media (min-width: 528px) {
+  .container__cite--text {
+    font-size: 1.4rem;
+  }
+  .container__cite--author {
+    font-size: 1.6rem;
+  }
+  .container__cite--author--desc {
+    font-size: 1rem;
   }
 }
 

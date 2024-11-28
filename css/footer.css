@@ -33,26 +33,27 @@
 
 .footer__container span {
   background: var(--bk);
-  font-size: 16px;
-  padding: 20px;
+  font-size: 1.2rem;
+  width: fit-content;
+  padding: 10px;
   color: var(--wt);
   text-align: justify;
 }
 
 .footer__container p {
-  font-size: 12px;
+  font-size: 16px;
   font-family: var(--title);
   color: var(--bk);
 }
 
 .footer__container--logo {
   display: flex;
-  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
   height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
 }
 
 .footer__container--logo img {
@@ -62,7 +63,7 @@
 
 .footer__container--logo h5 {
   font-family: Clurbantik;
-  font-size: 20px;
+  font-size: 32px;
   color: var(--bk);
   text-align: center;
 }
