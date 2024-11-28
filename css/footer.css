@@ -35,7 +35,7 @@
   background: var(--bk);
   font-size: 1.2rem;
   width: fit-content;
-  padding: 10px;
+  padding: 3px;
   color: var(--wt);
   text-align: justify;
 }

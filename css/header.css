@@ -1,10 +1,7 @@
 .header {
   display: flex;
-  flex-direction: row;
-  width: 100%;
   flex-wrap: wrap;
 
-  min-height: 90px;
   background: linear-gradient(
     90deg,
     rgba(254, 0, 62, 1) 0%,
@@ -15,7 +12,7 @@
 
 .header__logo {
   display: flex;
-  padding: 10px;
+  padding: 7px;
 }
 .header__logo--btn {
   cursor: pointer;
@@ -68,7 +65,7 @@
 .header__nav {
   display: flex;
   flex: 1 1 auto;
-  padding: 10px;
+  padding: 5px;
 }
 
 .header__nav ul {
@@ -103,7 +100,7 @@
 .header__nav--item {
   display: flex;
   position: relative;
-  min-width: 160px;
+  min-width: 10rem;
   min-height: 2.5rem;
   flex-grow: 1;
 }
