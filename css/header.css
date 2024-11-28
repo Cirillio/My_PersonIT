@@ -45,7 +45,7 @@
 
 .header__logo--logo {
   user-select: none;
-  font-family: var(--logo);
+  font-family: Logo;
 
   display: flex;
   flex-direction: column;
