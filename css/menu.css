@@ -35,9 +35,13 @@
   margin: 10px;
   padding-left: 10px;
   padding-top: 10px;
+}
+.menu__item a {
+  text-decoration: none;
   color: var(--wt);
   font-size: 14px;
   font-family: var(--text);
+  width: 100%;
 }
 
 .menu__item::after {

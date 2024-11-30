@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="src/favicon.ico" type="image/x-icon" />
     <title>Cyberpunk: traum evolution</title>
+    <!-- Roboto Mono Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Source Code Pro Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
@@ -34,16 +48,18 @@
     <div class="menu--container">
       <div class="menu">
         <ul>
-          <li class="menu__item">Начало</li>
-          <li class="menu__item">Что такое киберпанк</li>
-          <li class="menu__item">Почему киберпанк актуален</li>
-          <li class="menu__item">Влияние на мир</li>
+          <li class="menu__item"><a href="#header">Начало</a></li>
+          <li class="menu__item"><a href="#title1">Что такое киберпанк</a></li>
+          <li class="menu__item">
+            <a href="#title2">Почему киберпанк актуален</a>
+          </li>
+          <li class="menu__item"><a href="#title3">Влияние на мир</a></li>
         </ul>
       </div>
     </div>
 
     <main class="main">
-      <header class="header">
+      <header class="header" id="header">
         <div class="header__logo">
           <button class="header__logo--btn">
             <div class="header__logo--btn--line"></div>
@@ -94,8 +110,16 @@
             </div>
             <div class="container__block--slider">
               <button class="slider-back"><</button>
-              <div class="container__block--img">
-                <img src="src/desc1.jpg" alt="desc1" />
+              <div class="container__block--slides">
+                <div class="container__block--slide">
+                  <img src="src/desc1.jpg" alt="desc1" />
+                </div>
+                <div class="container__block--slide">
+                  <img src="src/desc1_2.jpg" alt="desc1" />
+                </div>
+                <div class="container__block--slide">
+                  <img src="src/desc1_3.jpg" alt="desc1" />
+                </div>
               </div>
               <button class="slider-next">></button>
             </div>
@@ -105,7 +129,7 @@
             <img src="src/restrictedarea.png" alt="restrictedarea" />
           </div>
           <!--  -->
-          <div class="container__block--title">
+          <div class="container__block--title" id="title1">
             <h3>Что такое киберпанк</h3>
           </div>
           <!--  -->
@@ -127,8 +151,16 @@
             </div>
             <div class="container__block--slider">
               <button class="slider-back"><</button>
-              <div class="container__block--img">
-                <img src="src/desc2.jpg" alt="desk2" />
+              <div class="container__block--slides">
+                <div class="container__block--slide">
+                  <img src="src/desc2.jpg" alt="desk2" />
+                </div>
+                <div class="container__block--slide">
+                  <img src="src/desc2_2.jpg" alt="desk2" />
+                </div>
+                <div class="container__block--slide">
+                  <img src="src/desc2_3.jpg" alt="desk2" />
+                </div>
               </div>
               <button class="slider-next">></button>
             </div>
@@ -136,7 +168,7 @@
           <div class="img--between">
             <img src="src/serial.png" alt="serial" />
           </div>
-          <div class="container__block--title">
+          <div class="container__block--title" id="title2">
             <h3>Почему киберпанк актуален</h3>
           </div>
           <div class="container__block">
@@ -159,8 +191,16 @@
             </div>
             <div class="container__block--slider">
               <button class="slider-back"><</button>
-              <div class="container__block--img">
-                <img src="src/desc3.jpg" alt="desc3" />
+              <div class="container__block--slides">
+                <div class="container__block--slide">
+                  <img src="src/desc3.jpg" alt="desc3" />
+                </div>
+                <div class="container__block--slide">
+                  <img src="src/desc3_2.jpg" alt="desc3" />
+                </div>
+                <div class="container__block--slide">
+                  <img src="src/desc3_3.jpg" alt="desc3" />
+                </div>
               </div>
               <button class="slider-next">></button>
             </div>
@@ -168,7 +208,7 @@
           <div class="img--between">
             <img src="src/highvoltage.png" alt="highvoltage" />
           </div>
-          <div class="container__block--title">
+          <div class="container__block--title" id="title3">
             <h3>Влияние на мир</h3>
           </div>
           <div class="container__block">
@@ -189,8 +229,16 @@
             </div>
             <div class="container__block--slider">
               <button class="slider-back"><</button>
-              <div class="container__block--img">
-                <img src="src/desc4.jpg" alt="desk4" />
+              <div class="container__block--slides">
+                <div class="container__block--slide">
+                  <img src="src/desc4.jpg" alt="desk4" />
+                </div>
+                <div class="container__block--slide">
+                  <img src="src/desc4_2.jpg" alt="desk4" />
+                </div>
+                <div class="container__block--slide">
+                  <img src="src/desc4_3.jpg" alt="desk4" />
+                </div>
               </div>
               <button class="slider-next">></button>
             </div>
@@ -198,8 +246,8 @@
           <div class="line"></div>
           <div class="container__cite">
             <div class="container__cite--text">
-              Цифровое пространство - это новая дикая местность, где власть
-              определяется информацией, а границы размыты.
+              «Цифровое пространство - это новая дикая местность, где власть
+              определяется информацией, а границы размыты.»
             </div>
             <div class="container__cite--author">Уильям Гибсон</div>
             <div class="container__cite--author--desc">

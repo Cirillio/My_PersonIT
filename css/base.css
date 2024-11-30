@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 10px;
+  font-size: 8px;
 }
 
 :root {
@@ -27,6 +27,7 @@ html {
   ::-webkit-scrollbar {
     display: none;
   }
+  scroll-behavior: smooth;
 }
 
 .background {
@@ -82,6 +83,12 @@ body {
   width: 100%;
   gap: 2rem;
   padding: 2rem 0;
+}
+
+@media (min-width: 340px) {
+  * {
+    font-size: 12px;
+  }
 }
 
 /* Оптимальные значения */

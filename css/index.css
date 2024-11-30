@@ -23,9 +23,10 @@
   margin: 0 auto;
 
   h3 {
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-family: var(--title);
     text-decoration: underline;
+    text-align: center;
   }
 }
 
@@ -79,15 +80,75 @@
 }
 
 .container__block--slider {
+  position: relative;
+  flex-direction: row;
+  display: flex;
+  /* max-width: 40%;
+  height: 100%; */
+  flex: 0 0 auto;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__block--slides {
+  height: 100%;
+  width: 100%;
   display: flex;
 }
 
-.container__block--img {
+.container__block--slide {
   display: flex;
+  height: 100%;
+  min-width: 100%;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 
-  align-items: center;
-  justify-content: center;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.slide-transition {
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-back,
+.slider-next {
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider-back {
+  left: 0;
+}
+
+.slider-next {
+  right: 0;
+}
+
+.slider-back,
+.slider-next {
+  cursor: pointer;
+  border: none;
+  padding: 4px;
+  height: 100%;
+  background: var(--bk);
+  opacity: 1;
+  color: var(--yel);
+  font-size: 30px;
+  font-family: var(--text);
+  transition: 0.2s;
+
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 .container__block--subtitle {
@@ -96,7 +157,7 @@
   background: var(--bk);
   color: var(--yel);
   font-family: var(--text);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 400;
   flex: 1 1 auto;
 }
@@ -119,22 +180,6 @@
   text-align: justify;
 }
 
-.container__block--slider button {
-  cursor: pointer;
-  border: none;
-  padding: 4px;
-  background: var(--bk);
-  opacity: 1;
-  color: var(--yel);
-  font-size: 30px;
-  font-family: var(--text);
-  transition: 0.2s;
-
-  &:active {
-    opacity: 0.5;
-  }
-}
-
 .container__cite {
   position: relative;
   display: flex;
@@ -154,30 +199,10 @@
 .container__cite--text {
   top: 45%;
   left: 10%;
-  width: 28rem;
+  width: 24rem;
   font-family: var(--text);
+  font-size: 1rem;
   text-shadow: 1px 2px 5px var(--bk);
-}
-.container__cite--text::after,
-.container__cite--text::before {
-  position: absolute;
-  z-index: 1;
-  width: fit-content;
-  height: fit-content;
-  color: var(--wt);
-  font-family: var(--title);
-  font-size: 3vw;
-  font-weight: 600;
-}
-.container__cite--text::after {
-  content: "<<";
-  bottom: 50%;
-  right: 105%;
-}
-.container__cite--text::before {
-  content: ">>";
-  top: 0%;
-  left: 105%;
 }
 
 .container__cite--author {
@@ -185,6 +210,7 @@
   bottom: 10%;
   text-decoration: underline;
   font-family: var(--title);
+  font-size: 1rem;
 }
 
 .container__cite--author:hover ~ .container__cite--author--desc {
@@ -195,6 +221,7 @@
   bottom: -15%;
   transition: 0.1s ease-in;
   font-family: var(--text);
+  font-size: 0.6rem;
 }
 
 .container__cite--img {
@@ -222,9 +249,8 @@
 }
 
 /* Телефон */
-@media (min-width: 340px) {
+@media (min-width: 140px) {
   .container__block {
-    align-items: center;
     flex-direction: column;
     gap: 20px;
   }
@@ -234,39 +260,15 @@
   }
 
   .container__block--slider {
-    height: 200px;
-    width: 100%;
-  }
-  .container__block--img {
-    width: 100%;
-    img {
-      width: 100%;
-    }
-  }
-
-  .container__cite--text {
-    font-size: 1rem;
-  }
-
-  .container__cite--author {
-    font-size: 1.1rem;
-  }
-
-  .container__cite--author--desc {
-    font-size: 0.7rem;
+    max-width: 100%;
+    height: 100px;
   }
 }
 
-/* Оптимальные значения */
-@media (min-width: 528px) {
-  .container__cite--text {
-    font-size: 1.4rem;
-  }
-  .container__cite--author {
-    font-size: 1.6rem;
-  }
-  .container__cite--author--desc {
-    font-size: 1rem;
+@media (min-width: 340px) {
+  .container__block--slider {
+    max-width: 100%;
+    height: 200px;
   }
 }
 
@@ -276,7 +278,7 @@
     justify-content: space-between;
     flex-direction: row;
     height: 260px;
-    gap: 0;
+    gap: 50px;
   }
 
   .container__block:nth-child(2n) {
@@ -284,15 +286,7 @@
   }
 
   .container__block--slider {
+    max-width: 40%;
     height: 100%;
-    width: fit-content;
-  }
-  .container__block--img {
-    height: 100%;
-    width: fit-content;
-    img {
-      height: 100%;
-      width: fit-content;
-    }
   }
 }
