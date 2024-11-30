@@ -13,7 +13,6 @@
   height: 100%;
   float: left;
   width: 10%;
-  display: flex;
   flex-direction: column;
   justify-content: center;
 }
@@ -34,6 +33,11 @@
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
 }
+
+/* .pulse:first-child {
+  margin-top: 0;
+} */
+
 @keyframes pulse {
   0% {
     filter: drop-shadow(0px 0px 2px var(--red));
@@ -53,5 +57,232 @@
 
   100% {
     filter: drop-shadow(0px 0px 2px var(--red));
+  }
+}
+
+.container__intro {
+  position: relative;
+
+  display: flex;
+  margin-top: 50px;
+
+  width: 100%;
+  height: 600px;
+}
+
+.intro--img {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0px 0px 20px var(--bk);
+  }
+}
+.intro--img::after,
+.intro--img::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+
+.intro--img::before {
+  top: 30px;
+  left: 30px;
+  border-top: 5px solid var(--wt);
+  border-left: 5px solid var(--wt);
+}
+
+.intro--img::after {
+  bottom: 30px;
+  right: 30px;
+  border-bottom: 5px solid var(--wt);
+  border-right: 5px solid var(--wt);
+}
+
+.intro--title {
+  z-index: 3;
+  position: absolute;
+  left: 20%;
+  top: -40px;
+
+  transform: rotateZ(5deg);
+
+  background: var(--yel);
+  padding: 0 18px;
+
+  width: 70%;
+  mix-blend-mode: screen;
+  font-family: var(--title);
+  font-size: 2rem;
+  text-decoration: underline;
+  text-align: center;
+}
+.intro--text {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 75%;
+  max-height: 80%;
+  font-size: 1.6rem;
+  color: var(--wt);
+  font-family: var(--text);
+  text-align: justify;
+  text-shadow: 1px 2px 5px var(--bk);
+}
+
+.container__outro {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 500px;
+  gap: 20px;
+}
+
+.outro--form,
+.outro--end {
+  position: relative;
+  display: flex;
+  min-width: 300px;
+  flex: 1;
+}
+
+.outro--form h3 {
+  user-select: none;
+  pointer-events: none;
+  top: -30px;
+  left: -20px;
+  position: absolute;
+  background: var(--yel);
+  transform: rotateZ(-5deg);
+  padding: 12px;
+  mix-blend-mode: screen;
+  font-size: 1.4rem;
+  font-family: var(--title);
+  text-decoration: underline;
+
+  &:after {
+    content: "Оставьте своё мнение";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--wt);
+  }
+}
+
+.outro--form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  border-right: 5px solid var(--wt);
+  padding: 50px 0;
+  gap: 20px;
+
+  background: var(--bk);
+}
+
+.outro--form form input,
+textarea,
+button {
+  border: 1px solid var(--yel);
+  font-family: var(--text);
+  font-size: 1rem;
+  transition: 0.1s ease-in-out;
+  &:focus {
+    outline: none;
+    border-color: var(--red);
+    border-width: 3px;
+  }
+}
+
+.outro--form form input {
+  align-self: flex-end;
+  padding: 5px;
+  margin-right: 10px;
+  width: 60%;
+}
+
+.outro--form form textarea {
+  background: none;
+  resize: none;
+  width: 90%;
+  height: 300px;
+  padding: 10px;
+  color: var(--wt);
+  align-self: center;
+}
+
+.outro--form form button {
+  align-self: center;
+  background: var(--wt);
+  padding: 2px 5px;
+}
+
+.outro--end img {
+  border-left: 5px solid var(--wt);
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.outro--end p {
+  position: absolute;
+  width: 80%;
+  color: var(--wt);
+  font-family: var(--text);
+  font-size: 1.2rem;
+  text-align: end;
+  text-shadow: 1px 2px 5px var(--bk);
+  top: 10%;
+  right: 20px;
+}
+
+@media (min-width: 140px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .neon--left,
+  .neon--right {
+    display: none;
+  }
+  .container__intro {
+    height: 450px;
+  }
+}
+
+@media (min-width: 340px) {
+  .container__intro {
+    height: 600px;
+  }
+}
+
+@media (min-width: 528px) {
+  .main {
+    display: block;
+  }
+  .wrapper {
+    width: 80%;
+  }
+
+  .neon--left,
+  .neon--right {
+    display: flex;
   }
 }
