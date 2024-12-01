@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Подгоняю фоновое видео под экран
-  const bg = document.querySelector(".background");
-  window.addEventListener("resize", () => {
-    if (window.innerHeight / window.innerWidth > 0.75) {
-      bg.classList.add("vh100");
-      bg.classList.remove("vw100");
-    } else {
-      bg.classList.add("vw100");
-      bg.classList.remove("vh100");
-    }
-  });
-
   // Кнопка переключения звука фоновой музыки
   const music = document.querySelector("#ambient-music"),
     ambient = document.getElementById("ambient"),
