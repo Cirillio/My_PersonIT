@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>24 Hotel</title>
+
+    <link rel="stylesheet" href="./src/output.css" />
+
+    <style>
+      .header-bg {
+        background-color: rgba(68, 68, 68, 0.603);
+      }
+
+      .space-mono {
+        font-family: "Space Mono", Helvetica, sans-serif;
+      }
+      .work-sans {
+        font-family: "Work Sans", Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <header
+      class="w-full fixed top-0 items-center header-bg text-white h-20 px-10 py-2 flex"
+    >
+      <a href="./index.html" class="h-2/3 flex items-center gap-3">
+        <img
+          class="h-full rounded-full border-2 border-amber-300"
+          src="./icons/logo.svg"
+          alt="logo"
+        />
+        <p class="work-sans text-3xl text-amber-300 font-bold">24 Hotel</p>
+      </a>
+      <div class="mr-20 ml-auto">
+        <ul class="flex gap-5 text-white work-sans">
+          <a href="#">
+            <li class="cursor-pointer transition hover:underline">Hotels</li>
+          </a>
+          <a href="#">
+            <li class="cursor-pointer transition hover:underline">Contacts</li>
+          </a>
+          <a href="#">
+            <li class="cursor-pointer transition hover:underline">Reviews</li>
+          </a>
+        </ul>
+      </div>
+      <div class="flex gap-2 work-sans">
+        <button
+          class="bg-red-500 p-3 rounded-md text-white cursor-pointer shadow-md transition-all border border-red-500 hover:border-amber-500"
+        >
+          Sign Up
+        </button>
+        <button
+          class="bg-amber-300 p-3 rounded-md text-black cursor-pointer shadow-md transition-all border border-amber-300 hover:border-red-500"
+        >
+          Login
+        </button>
+      </div>
+    </header>
+    <section class="parallax">
+      <div
+        class="parallax-window min-h-[600px] object-cover transition-all"
+        data-parallax="scroll"
+        data-image-src="./img/main_bg.jpg"
+      ></div>
+    </section>
+    <main class="min-h-full flex w-full bg-slate-300 flex-col px-10">
+      <div class="w-full h-full">
+        <h1 class="text-xl work-sans">about us</h1>
+        <div class="w-full flex gap-5">
+          <div class="bg-amber-300 rounded-sm flex-1 shadow-md min-h-60"></div>
+          <div class="bg-amber-300 rounded-sm flex-1 shadow-md min-h-60"></div>
+          <div class="bg-amber-300 rounded-sm flex-1 shadow-md min-h-60"></div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="./scripts/jquery-3.7.1.min.js"></script>
+    <script src="./scripts/parallax.min.js"></script>
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 460 460" xml:space="preserve">
+<g>
+	<path style="fill:#FF1909;" d="M230,0C102.974,0,0,102.974,0,230c0,97.486,60.651,180.807,146.277,214.287l298.01-298.009
+		C410.808,60.651,327.487,0,230,0z"/>
+	<path style="fill:#AA1106;" d="M460,230c0-29.539-5.575-57.774-15.719-83.719L379,81L81,379l65.281,65.281
+		C172.226,454.425,200.461,460,230,460C357.026,460,460,357.025,460,230z"/>
+	<polygon style="fill:#FF984C;" points="379,81 379,379 230,379 140.6,229.993 230,81 	"/>
+	<rect x="81" y="81" style="fill:#FFC240;" width="149" height="298"/>
+	<polygon style="fill:#FFF0CF;" points="359,101 359,359 230,359 152.6,229.994 230,101 	"/>
+	<rect x="101" y="101" style="fill:#FFFFFF;" width="129" height="258"/>
+	<polygon style="fill:#FF984C;" points="308.999,199.998 308.999,259.998 229.999,259.998 199.499,229.998 229.999,199.998 	"/>
+	<rect x="152.6" y="200" style="fill:#FFC240;" width="77.4" height="60"/>
+	<polygon style="fill:#FFC240;" points="195.5,135.5 195.5,324.5 165.5,324.5 155.5,230 165.5,135.5 	"/>
+	<rect x="135.5" y="135.5" style="fill:#FFD170;" width="30" height="189"/>
+	<polygon style="fill:#FF6E36;" points="324.5,135.5 324.5,324.5 294.5,324.5 284.5,230 294.5,135.5 	"/>
+	<rect x="264.5" y="135.5" style="fill:#FF984C;" width="30" height="189"/>
+</g>
+</svg>
