@@ -1,1 +1,8 @@
 @import "tailwindcss";
+@layer utilities;
+
+@layer utilities {
+  .test {
+    @apply text-red-500;
+  }
+}

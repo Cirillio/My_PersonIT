@@ -18,11 +18,19 @@
       rel="stylesheet"
     />
 
-    <title>24 Hotel</title>
+    <title>24Hotel</title>
+
+    <script src="./scripts/jquery-3.7.1.min.js"></script>
+    <script src="./scripts/parallax.js"></script>
 
     <link rel="stylesheet" href="./src/output.css" />
 
     <style>
+      :root {
+        --main-input: rgba(241, 245, 249, 0.1);
+        --header-bg: rgba(68, 68, 68, 0.603);
+      }
+
       .header-bg {
         background-color: rgba(68, 68, 68, 0.603);
       }
@@ -33,21 +41,124 @@
       .work-sans {
         font-family: "Work Sans", Helvetica, sans-serif;
       }
+
+      /* Убираем стандартную стрелку ввода даты для Chrome, Safari, Edge */
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+
+      /* Убираем стандартную стрелку ввода даты для Firefox */
+      input[type="date"]::-moz-calendar-picker-indicator {
+        display: none;
+      }
+
+      /* Добавляем кастомную иконку календаря */
+      input[type="date"] {
+        position: relative;
+        padding-right: 30px; /* Оставляем место для иконки */
+      }
+
+      input[type="date"]::after {
+        content: "📅";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; /* Иконка не должна мешать кликам */
+        font-size: 18px;
+        color: #000;
+      }
+
+      /* Убираем стандартные стили браузера */
+      input[type="date"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: none;
+      }
+
+      .burger-button {
+        position: relative;
+        min-width: 43px;
+        min-height: 43px;
+        cursor: pointer;
+        transition: 0.1s ease-in-out;
+
+        &:hover .btn-line {
+          width: 70%;
+          height: 2px;
+        }
+
+        &:hover {
+          box-shadow: inset 0px 0px 4px black;
+        }
+      }
+
+      .btn-line {
+        position: absolute;
+        width: 80%;
+        height: 2px;
+
+        left: 50%;
+        transition: 0.1s ease-in-out;
+        transform: translate(-50%, -50%);
+      }
+
+      .line {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background: white;
+        transform: rotate(0deg);
+        transition: 0.1s ease-in-out;
+      }
+
+      .btn-line.middle {
+        top: 22px;
+        opacity: 1;
+      }
+
+      .btn-line.top {
+        top: 12px;
+      }
+
+      .btn-line.bottom {
+        top: 32px;
+      }
+
+      .btn-line.top.active-line {
+        top: 22px;
+      }
+
+      .btn-line.bottom.active-line {
+        top: 22px;
+      }
+
+      .btn-line.top.active-line .line {
+        transform: rotate(45deg);
+      }
+
+      .btn-line.bottom.active-line .line {
+        transform: rotate(-45deg);
+      }
     </style>
   </head>
-  <body>
+  <body class="min-h-dvh flex flex-col bg-slate-100">
     <header
-      class="w-full fixed top-0 items-center header-bg text-white h-20 px-10 py-2 flex"
+      class="w-full md:fixed top-0 z-10 items-center bg-black md:bg-(--header-bg) text-white h-20 px-4 md:px-10 py-2 flex"
     >
-      <a href="./index.html" class="h-2/3 flex items-center gap-3">
+      <a
+        href="./index.html"
+        class="h-2/3 flex items-center gap-3 select-none pointer-events-none"
+      >
         <img
-          class="h-full rounded-full border-2 border-amber-300"
+          class="h-full rounded-full border-2 border-slate-300"
           src="./icons/logo.svg"
           alt="logo"
         />
-        <p class="work-sans text-3xl text-amber-300 font-bold">24 Hotel</p>
+        <p class="space-mono text-3xl text-slate-100 font-bold">24Hotel</p>
       </a>
-      <div class="mr-20 ml-auto">
+      <div class="mr-5 flex-1 min-[100px]:hidden md:flex justify-end">
         <ul class="flex gap-5 text-white work-sans">
           <a href="#">
             <li class="cursor-pointer transition hover:underline">Hotels</li>
@@ -60,39 +171,269 @@
           </a>
         </ul>
       </div>
-      <div class="flex gap-2 work-sans">
+      <div class="gap-2 work-sans min-[100px]:hidden md:flex">
         <button
-          class="bg-red-500 p-3 rounded-md text-white cursor-pointer shadow-md transition-all border border-red-500 hover:border-amber-500"
+          class="bg-red-500 p-3 rounded-md text-white cursor-pointer shadow-md transition-all hover:bg-amber-300 hover:text-black"
         >
           Sign Up
         </button>
         <button
-          class="bg-amber-300 p-3 rounded-md text-black cursor-pointer shadow-md transition-all border border-amber-300 hover:border-red-500"
+          class="bg-amber-300 p-3 rounded-md text-black cursor-pointer shadow-md transition-all hover:bg-red-500 hover:text-white"
         >
           Login
         </button>
       </div>
+      <button class="burger-button md:hidden ml-auto flex text-white">
+        <div class="btn-line top"><div class="line"></div></div>
+        <div class="btn-line middle"><div class="line"></div></div>
+        <div class="btn-line bottom"><div class="line"></div></div>
+      </button>
     </header>
-    <section class="parallax">
+    <aside class="fixed z-20 right-0 w-full h-full md:hidden block">
+      <div class="bg-black opacity-50 w-full h-full"></div>
       <div
-        class="parallax-window min-h-[600px] object-cover transition-all"
+        class="bg-zinc-900 work-sans fixed md:top-20 top-0 right-0 flex h-full w-60 flex-col gap-5 p-5"
+      >
+        <button
+          class="cursor-pointer transition text-3xl font-semibold text-zinc-400 hover:bg-zinc-600 bg-zinc-800 px-2 py-2 rounded-md text-center"
+        >
+          X
+        </button>
+        <button
+          class="bg-red-500 p-3 rounded-md text-white cursor-pointer shadow-md transition-all hover:bg-amber-300 hover:text-black"
+        >
+          Sign Up
+        </button>
+        <button
+          class="bg-amber-300 p-3 rounded-md text-black cursor-pointer shadow-md transition-all hover:bg-red-500 hover:text-white"
+        >
+          Login
+        </button>
+        <ul class="flex flex-col gap-5 text-white work-sans">
+          <a href="#">
+            <li
+              class="cursor-pointer transition hover:underline hover:shadow-sm hover:shadow-neutral-600 bg-zinc-800 px-2 py-4 rounded-md text-center"
+            >
+              Hotels
+            </li>
+          </a>
+          <a href="#">
+            <li
+              class="cursor-pointer transition hover:underline hover:shadow-sm hover:shadow-neutral-600 bg-zinc-800 px-2 py-4 rounded-md text-center"
+            >
+              Contacts
+            </li>
+          </a>
+          <a href="#">
+            <li
+              class="cursor-pointer transition hover:underline hover:shadow-sm hover:shadow-neutral-600 bg-zinc-800 px-2 py-4 rounded-md text-center"
+            >
+              Reviews
+            </li>
+          </a>
+        </ul>
+      </div>
+    </aside>
+    <section class="parallax h-full relative">
+      <div
         data-parallax="scroll"
-        data-image-src="./img/main_bg.jpg"
+        data-image-src="./img/main_bg2.jpg"
+        class="parallax-window min-h-[700px]"
       ></div>
+      <div
+        class="absolute xl:w-[50%] xl:px-0 w-full lg:px-40 px-4 top-[50%] left-[50%] translate-[-50%] flex flex-col gap-4 text-white"
+      >
+        <p class="space-mono text-3xl border-2 p-5 select-none border-white">
+          Your journey starts here!
+        </p>
+        <form
+          class="main-form relative flex flex-wrap transition duration-[100ms] bg-(--main-input) gap-2 items-center border-2 work-sans p-5 select-none h-fit border-white focus:outline-0"
+        >
+          <div class="flex flex-col gap-2 w-full">
+            <label for="destination" class="text-sm"
+              >Where do you want to go?</label
+            >
+            <input
+              class="border border-white p-2 focus:outline-0 shadow-xl"
+              type="text"
+              id="destination"
+              placeholder="For example, Moscow"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="flex gap-2 sm:flex-2 w-full sm:w-fit flex-wrap">
+            <div class="flex flex-1 flex-col gap-2 min-w-fit">
+              <label for="check-in" class="text-sm">Check-in Date</label>
+              <input
+                class="border border-white p-2 focus:outline-0 shadow-xl appearance-none cursor-pointer"
+                type="date"
+                id="check-in"
+                name="check-in"
+              />
+            </div>
+
+            <div class="flex flex-1 flex-col gap-2 min-w-fit">
+              <label for="check-out" class="text-sm">Check-out Date</label>
+              <input
+                class="border border-white p-2 focus:outline-0 shadow-xl appearance-none cursor-pointer"
+                type="date"
+                id="check-out"
+                name="check-out"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-1 gap-2 min-w-fit">
+            <label for="guests" class="text-sm z-10">How many guests?</label>
+
+            <div
+              id="guests"
+              class="border border-white h-auto p-2 cursor-pointer focus:outline-0 relative after:content-['⇩'] after:absolute after:top-[50%] after:translate-y-[-50%] after:right-2 after:text-white"
+            >
+              <input
+                type="text"
+                readonly
+                class="w-full work-sans cursor-pointer focus:outline-0 shadow-xl"
+                value="1"
+              />
+
+              <ul
+                class="absolute z-20 rounded-md work-sans flex h-0 overflow-hidden transition-all flex-col justify-around left-0 top-[100%] w-full bg-white text-xl"
+              >
+                <li
+                  class="text-slate-700 text-center transition-all mx-2 border-y border-slate-100 hover:shadow-sm"
+                  data-value="1"
+                >
+                  1
+                </li>
+                <li
+                  class="text-slate-700 text-center transition-all mx-2 border-y border-slate-100 hover:shadow-sm"
+                  data-value="2"
+                >
+                  2
+                </li>
+                <li
+                  class="text-slate-700 text-center transition-all mx-2 border-y border-slate-100 hover:shadow-sm"
+                  data-value="3"
+                >
+                  3
+                </li>
+                <li
+                  class="text-slate-700 text-center transition-all mx-2 border-y border-slate-100 hover:shadow-sm"
+                  data-value="4"
+                >
+                  4
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="border w-fit px-4 py-2 gap-1 bg-transparent hover:bg-black absolute left-[50%] translate-x-[-50%] -bottom-20 flex items-center justify-center border-slate-400 hover:border-slate-100 transition-all cursor-pointer focus:outline-0"
+          >
+            <img
+              src="./icons/search.svg"
+              alt="search"
+              class="invert h-full flex max-h-8"
+            />
+            Search
+          </button>
+        </form>
+      </div>
     </section>
-    <main class="min-h-full flex w-full bg-slate-300 flex-col px-10">
+    <main
+      class="flex w-full bg-slate-100 flex-col py-5 px-6 md:px-20 2xl:px-96 xl:px-52"
+    >
       <div class="w-full h-full">
-        <h1 class="text-xl work-sans">about us</h1>
-        <div class="w-full flex gap-5">
-          <div class="bg-amber-300 rounded-sm flex-1 shadow-md min-h-60"></div>
-          <div class="bg-amber-300 rounded-sm flex-1 shadow-md min-h-60"></div>
-          <div class="bg-amber-300 rounded-sm flex-1 shadow-md min-h-60"></div>
+        <h1
+          class="space-mono mx-auto px-5 py-2 font-bold w-fit rounded-md border-3 border-slate-600 text-4xl text-slate-600 drop-shadow-md"
+        >
+          ABOUT US
+        </h1>
+        <div
+          class="w-full flex flex-col sm:flex-row xl:gap-20 gap-5 text-slate-700 my-10 work-sans"
+        >
+          <div
+            class="bg-slate-200 items-center rounded-md p-5 sm:flex sm:flex-col gap-2 flex-1 shadow-xl min-h-40"
+          >
+            <img
+              src="./icons/about_stars.svg"
+              alt="about_stars"
+              class="max-h-28 float-left sm:block mr-5 sm:mr-0"
+            />
+            <h3
+              class="font-bold sm:text-center text-red-500 uppercase drop-shadow-sm text-xl"
+            >
+              Best Offers
+            </h3>
+            <p class="sm:text-center sm:block clear-right">
+              Find the best accommodation deals with discounts up to 50%! We
+              have gathered top hotel offers with the best conditions: from
+              luxurious rooms to cozy apartments.
+            </p>
+          </div>
+          <div
+            class="bg-slate-200 items-center rounded-md p-5 sm:flex sm:flex-col gap-2 flex-1 shadow-xl min-h-40"
+          >
+            <img
+              src="./icons/about_phone.svg"
+              alt="about_phone"
+              class="max-h-28 float-left sm:block mr-5 sm:mr-0"
+            />
+            <h3
+              class="font-bold sm:text-center text-red-500 uppercase drop-shadow-sm text-xl"
+            >
+              Booking Assistance
+            </h3>
+            <p class="sm:text-center sm:block clear-right">
+              Not sure which room to choose? Our consultants are ready to help
+              you 24/7! Just contact us via chat or call — we will find the
+              perfect option for your stay.
+            </p>
+          </div>
+          <div
+            class="bg-slate-200 items-center rounded-md p-5 sm:flex sm:flex-col gap-2 flex-1 shadow-xl min-h-40"
+          >
+            <img
+              src="./icons/about_fav.svg"
+              alt="about_fav"
+              class="max-h-28 float-left sm:block mr-5 sm:mr-0"
+            />
+            <h3
+              class="font-bold sm:text-center text-red-500 uppercase drop-shadow-sm text-xl"
+            >
+              Favorite Places
+            </h3>
+            <p class="sm:text-center sm:block clear-right">
+              Save your favorite hotels and rooms to favorites so you can easily
+              return to them later. Create your wish list and plan your trips
+              without haste!
+            </p>
+          </div>
         </div>
       </div>
     </main>
-    <footer></footer>
-    <script src="./scripts/jquery-3.7.1.min.js"></script>
-    <script src="./scripts/parallax.min.js"></script>
-    <script></script>
+    <footer class="w-full mt-auto bg-slate-400 flex h-fit px-60 py-5">
+      <div class="flex-1 flex flex-col">
+        <a
+          href="./index.html"
+          class="h-2/3 flex pointer-events-none select-none items-center gap-3 max-h-8"
+        >
+          <img
+            class="h-full rounded-full border-2 border-amber-300"
+            src="./icons/logo.svg"
+            alt="logo"
+          />
+          <p class="space-mono text-3xl text-slate-100 font-bold">24Hotel</p>
+        </a>
+        <p>© all rights reserved</p>
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex-1"></div>
+    </footer>
+
+    <script src="./scripts/main_form.js"></script>
   </body>
 </html>
