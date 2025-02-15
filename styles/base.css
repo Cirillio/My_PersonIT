@@ -1,0 +1,22 @@
+:root {
+  --main-input: rgba(241, 245, 249, 0.1);
+  --header-bg: rgba(68, 68, 68, 0.603);
+}
+
+* {
+  outline: none;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-slate-100);
+}
+
+.space-mono {
+  font-family: "Space Mono", Helvetica, sans-serif;
+}
+.work-sans {
+  font-family: "Work Sans", Helvetica, sans-serif;
+}

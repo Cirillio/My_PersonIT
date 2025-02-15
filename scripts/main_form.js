@@ -1,27 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const burgerButton = document.querySelector(".burger-button");
-  let lines = document.querySelectorAll(".btn-line");
-  let menuList = document.querySelector(".menu-list");
-  let burgerToggle = false;
-  burgerButton.addEventListener("click", () => {
-    burgerToggle === false
-      ? (lines[1].style.opacity = 0)
-      : (lines[1].style.opacity = 1);
-    [lines[0], lines[2]].forEach((line) => {
-      line.classList.toggle("active-line");
-    });
-    // menuList.classList.toggle("active-menu");
-
-    burgerToggle = !burgerToggle;
-  });
-
-  //////
-
   const searchHotelForm = document.querySelector("form");
   const sendFormBtn = document.querySelector("form button");
   const formInputs = searchHotelForm.querySelectorAll("input");
 
-  // Количество посетителей
+  const destinationField = document.getElementById("destination");
+  const destinationFieldValueList = document.getElementById("destination-list");
+  const destinationsFieldValues = [];
+
   const guestsField = document.querySelector("#guests input");
   const guestsFieldValueList = document.querySelector("#guests ul");
   const guestsFieldValues = guestsFieldValueList.querySelectorAll("li");
@@ -42,6 +27,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let checkForm = true;
 
+  destinationField.addEventListener("input", () => {
+    const value = destinationField.value.trim();
+    const isValid = /^[a-zA-Zа-яА-Я0-\9s,.-]+$/.test(value);
+
+    if (!isValid) {
+      inputIncorrect(destinationField);
+    } else {
+      inputCorrect(destinationField);
+    }
+  });
+
+  const destination_List = [
+    "Москва, ул. Тверская, 13",
+    "Москва, Новинский бульвар, 8",
+    "Санкт-Петербург, Невский пр., 28",
+    "Санкт-Петербург, Дворцовая набережная, 32",
+    "Новосибирск, ул. Ленина, 54",
+    "Новосибирск, ул. Красный проспект, 11",
+    "Екатеринбург, ул. Малышева, 45",
+    "Екатеринбург, ул. Вайнера, 27",
+    "Казань, ул. Баумана, 2",
+    "Казань, ул. Петербургская, 14",
+    "Нижний Новгород, пл. Минина и Пожарского, 1",
+    "Нижний Новгород, ул. Белинского, 60",
+    "Челябинск, ул. Кирова, 100",
+    "Челябинск, ул. Цвиллинга, 39",
+    "Омск, ул. Ленина, 26",
+    "Омск, ул. Мира, 11",
+    "Ростов-на-Дону, ул. Будённовский, 2",
+    "Ростов-на-Дону, ул. Темерницкая, 45",
+    "Уфа, ул. Карла Маркса, 123",
+    "Уфа, ул. Октябрьская, 10",
+  ];
+
+  destination_List.forEach((destination) => {
+    const li = document.createElement("li");
+    li.classList.add("input-li");
+    li.textContent = destination;
+    li.setAttribute("data-value", destination);
+    destinationFieldValueList.appendChild(li);
+    destinationsFieldValues.push(li);
+  });
+
+  function openDestinationsList(event) {
+    event.stopPropagation();
+    destinationFieldValueList.classList.remove("h-0");
+    destinationFieldValueList.classList.add("h-60");
+  }
+
+  function closeDestinationsList() {
+    destinationFieldValueList.classList.remove("h-60");
+    destinationFieldValueList.classList.add("h-0");
+  }
+
+  destinationsFieldValues.forEach((elem) => {
+    elem.onclick = () => {
+      destinationField.value = elem.dataset.value;
+      closeDestinationsList();
+    };
+  });
+
+  destinationField.onclick = (event) => {
+    formBlackBG(event);
+    openDestinationsList(event);
+    closeGuestsList();
+  };
+
   function inputCorrect(elem) {
     elem.classList.remove("border-red-500");
     elem.classList.add("border-white");
@@ -53,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function errorInInput(elem) {
-    checkForm = false;
     inputIncorrect(elem);
     elem.oninput = () => inputCorrect(elem);
   }
@@ -61,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function checkFormInputs() {
     formInputs.forEach((input) => {
       if (input.value === "") {
+        checkForm = false;
         errorInInput(input);
       }
     });
@@ -96,13 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
   guestsField.onclick = (event) => {
     formBlackBG(event);
     openGuestsList(event);
-  };
-
-  document.onclick = (event) => {
-    formBlackBG(event);
-    if (!document.getElementById("guests").contains(event.target)) {
-      closeGuestsList();
-    }
+    closeDestinationsList();
   };
 
   const dateInputs = document.querySelectorAll("input[type='date']");
@@ -113,22 +159,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Получаем инпуты даты въезда и выезда
   const checkInDateInput = dateInputs[0];
   const checkOutDateInput = dateInputs[1];
 
-  // Функция для проверки дат
   function validateDates() {
     const checkInDate = new Date(checkInDateInput.value);
     const checkOutDate = new Date(checkOutDateInput.value);
 
-    // Проверяем, что дата въезда не позднее даты выезда
     if (checkInDate >= checkOutDate) {
       console.error("Дата въезда не может быть позднее или равна дате выезда.");
       return false;
     }
 
-    // Проверяем, что разница между датами не менее дня и не более 90 дней
     const dayDifference = (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24);
     if (dayDifference < 1) {
       console.error("Разница между датами должна быть не менее одного дня.");
@@ -145,7 +187,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   }
 
-  // Добавляем обработчики событий для проверки дат при изменении
   checkInDateInput.addEventListener("change", (e) => {
     if (!validateDates()) {
       errorInInput(e.target);
@@ -154,6 +195,26 @@ document.addEventListener("DOMContentLoaded", () => {
   checkOutDateInput.addEventListener("change", (e) => {
     if (!validateDates()) {
       errorInInput(e.target);
+    }
+  });
+
+  ////////////////
+
+  document.onclick = (event) => {
+    formBlackBG(event);
+    if (
+      !document.getElementById("guests").contains(event.target) ||
+      !document.querySelector(".destinations").contains(event.target)
+    ) {
+      closeGuestsList();
+      closeDestinationsList();
+    }
+  };
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeDestinationsList();
+      closeGuestsList();
     }
   });
 });

@@ -2,7 +2,7 @@
 @layer utilities;
 
 @layer utilities {
-  .test {
-    @apply text-red-500;
+  .input-li {
+    @apply cursor-pointer text-slate-700 px-5 transition-all border-y border-slate-100 hover:shadow-sm;
   }
 }
