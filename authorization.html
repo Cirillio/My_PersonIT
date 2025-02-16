@@ -26,6 +26,18 @@
     <link rel="stylesheet" href="./src/output.css" />
     <link rel="stylesheet" href="./styles/base.css" />
     <link rel="stylesheet" href="./styles/input_date.css" />
+
+    <style>
+      .active-form {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .hidden-form {
+        left: 100%;
+        transform: translateX(0%);
+      }
+    </style>
   </head>
   <body>
     <header
@@ -108,6 +120,174 @@
         </ul>
       </div>
     </aside>
+
+    <section class="parallax h-dvh relative w-full overflow-hidden">
+      <div
+        data-parallax="scroll"
+        data-image-src="./img/auth_bg.jpg"
+        class="parallax-window h-full w-full"
+      ></div>
+
+      <div
+        class="reg-form hidden justify-center gap-5 p-5 absolute right-1/2 translate-x-1/2 top-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-slate-100 shadow-md shadow-neutral-600 rounded-md"
+      >
+        <div class="flex-3/7 h-full flex overflow-hidden rounded-sm">
+          <img
+            src="./img/reg.jpg"
+            alt="auth-img"
+            class="w-full contrast-90 object-cover"
+          />
+        </div>
+        <div class="flex-4/7 flex gap-2 flex-col">
+          <h2 class="space-mono text-3xl text-end font-bold select-none">
+            registration
+          </h2>
+          <button
+            id="toggle-login"
+            class="work-sans w-fit ml-auto underline text-neutral-500 cursor-pointer select-none"
+          >
+            Already have account?
+          </button>
+          <form
+            action="/register"
+            method="POST"
+            class="register flex flex-col gap-2 px-10 work-sans"
+          >
+            <label for="username" class="work-sans font-light text-xl"
+              >Username:</label
+            >
+            <input
+              type="text"
+              id="register_username"
+              name="register_username"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+            />
+            <label for="phone" class="work-sans font-light text-xl"
+              >Phone:</label
+            >
+            <input
+              type="tel"
+              id="register_phone"
+              name="register_phone"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+              placeholder="+7-996-099-11-01"
+            />
+            <label for="password" class="work-sans font-light text-xl"
+              >Password:</label
+            >
+            <input
+              type="password"
+              id="register_password"
+              name="register_password"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+            />
+            <label for="confirm_password" class="work-sans font-light text-xl"
+              >Confirm Password:</label
+            >
+            <input
+              type="password"
+              id="confirm_password"
+              name="confirm_password"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+            />
+            <div class="flex justify-between">
+              <button
+                id="register_submit"
+                type="submit"
+                class="bg-red-500 w-fit disabled:cursor-default disabled:hover:bg-red-500 text-white py-2 px-5 rounded-md hover:bg-red-600 cursor-pointer transition"
+              >
+                Register
+              </button>
+              <button
+                id="register_trouble"
+                class="bg-amber-300 w-fit disabled:cursor-default disabled:hover:bg-amber-300 text-black py-2 px-5 rounded-md hover:bg-amber-400 cursor-pointer transition"
+              >
+                Troubles?
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!--  -->
+
+      <div
+        class="login-form hidden justify-center gap-5 p-5 absolute left-[200%] -translate-x-1/2 top-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-slate-100 shadow-md shadow-neutral-600 rounded-md"
+      >
+        <div class="flex-3/7 h-full flex overflow-hidden rounded-sm">
+          <img
+            src="./img/auth.jpg"
+            alt="auth-img"
+            class="w-full contrast-75 brightness-110 object-cover"
+          />
+        </div>
+        <div class="flex-4/7 flex gap-2 flex-col">
+          <h2 class="space-mono text-3xl text-end font-bold select-none">
+            authorization
+          </h2>
+          <button
+            id="toggle-reg"
+            class="work-sans w-fit ml-auto underline text-neutral-500 cursor-pointer select-none"
+          >
+            There is no account yet?
+          </button>
+
+          <form
+            action="/login"
+            method="POST"
+            class="login flex flex-col gap-2 px-10 work-sans mt-8"
+          >
+            <label for="username" class="work-sans font-light text-xl"
+              >Login:</label
+            >
+            <input
+              type="text"
+              id="login_username"
+              name="login_username"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+            />
+            <label for="password" class="work-sans font-light text-xl"
+              >Password:</label
+            >
+            <input
+              type="password"
+              id="login_password"
+              name="login_password"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+              autocomplete="true"
+            />
+            <button
+              id="login_submit"
+              type="submit"
+              class="mt-4 bg-red-500 w-fit disabled:cursor-default disabled:hover:bg-red-500 text-white py-2 px-5 rounded-md hover:bg-red-600 cursor-pointer transition"
+            >
+              Sign in
+            </button>
+          </form>
+
+          <button
+            id="recover_toggle"
+            class="ml-10 space-mono bg-amber-300 hover:bg-amber-400 transition rounded-sm text-slate-700 px-5 py-2 cursor-pointer w-fit"
+          >
+            forgot password?
+          </button>
+          <div class="recover flex w-full transition-all opacity-0">
+            <input
+              id="recover_tel"
+              class="p-2 border ml-10 border-red-500 rounded-md transition focus:border-gray-900"
+              type="tel"
+              placeholder="+7-996-099-11-01"
+            />
+            <button
+              id="recover_submit"
+              class="space-mono ml-auto mr-10 bg-red-500 hover:bg-red-600 transition rounded-sm text-white px-5 py-2 cursor-pointer w-fit"
+            >
+              recover
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer
       class="w-full px-2 md:px-5 xl:px-20 h-fit mt-auto bg-red-500 flex flex-col gap-2 py-5"
@@ -224,6 +404,8 @@
         Designed and developed by 24Hotel Team.
       </p>
     </footer>
+    <script src="./scripts/auth_page/auth_page.js"></script>
+    <script src="./scripts/auth_page/login_form.js"></script>
     <script src="./scripts/aside_menu.js"></script>
   </body>
 </html>
