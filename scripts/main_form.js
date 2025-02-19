@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
   destinationsFieldValues.forEach((elem) => {
     elem.onclick = () => {
       destinationField.value = elem.dataset.value;
+      inputCorrect(destinationField);
       closeDestinationsList();
     };
   });

@@ -2,6 +2,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const formParam = urlParams.get("form");
 
+  const contentBlock = document.getElementById("main");
+  const elementRect = contentBlock.getBoundingClientRect();
+  const absoluteElementTop = elementRect.top + window.pageYOffset;
+  const middleOfElement = absoluteElementTop + elementRect.height / 2;
+  const offset = middleOfElement - window.innerHeight / 2;
+
+  window.scrollTo({
+    top: offset,
+    behavior: "smooth",
+  });
+
   const toggleLogin = document.getElementById("toggle-login"),
     toggleReg = document.getElementById("toggle-reg");
 
@@ -9,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     regForm = document.querySelector(".reg-form");
 
   const ToggleLogin = () => {
-    history.pushState({}, "", "/authorization.html?form=login");
+    // history.pushState({}, "", "/authorization.html?form=login");
 
     regForm.classList.add("right-[200%]");
     regForm.classList.remove("right-1/2");
@@ -19,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const ToggleReg = () => {
-    history.pushState({}, "", "/authorization.html?form=reg");
+    // history.pushState({}, "", "/authorization.html?form=reg");
 
     loginForm.classList.add("left-[200%]");
     loginForm.classList.remove("left-1/2");
