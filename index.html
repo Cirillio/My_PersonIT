@@ -55,21 +55,45 @@
         </ul>
       </div>
       <div class="gap-2 work-sans min-[100px]:hidden md:flex">
-        <a href="./authorization.html?form=reg"
+        <a href="./authorization.html?form=reg" class="auth"
           ><button
             class="bg-red-500 p-3 rounded-md text-white cursor-pointer shadow-md transition-all hover:bg-amber-300 hover:text-black"
           >
             Sign Up
           </button></a
         >
-        <a href="./authorization.html?form=login"
+        <a href="./authorization.html?form=login" class="auth"
           ><button
             class="bg-amber-300 p-3 rounded-md text-black cursor-pointer shadow-md transition-all hover:bg-red-500 hover:text-white"
           >
             Login
           </button></a
         >
+        <div class="relative user">
+          <button
+            class="user-block bg-white p-3 rounded-md text-black cursor-pointer shadow-md transition-all hover:bg-slate-700 hover:text-white"
+          ></button>
+          <div
+            class="user-submenu transition-all absolute h-0 left-1/2 -translate-x-1/2 top-full w-fit bg-white rounded-md shadow-md text-black space-mono flex flex-col overflow-hidden"
+          >
+            <a href="./user_page.html" class="flex h-full w-full">
+              <button
+                class="hover:cursor-pointer hover:bg-slate-200 transition-all px-5 py-1"
+              >
+                Profile
+              </button>
+            </a>
+            <div class="w-full h-[1px] bg-black z-10"></div>
+            <button
+              id="logOut"
+              class="hover:cursor-pointer hover:bg-slate-200 transition-all h-full w-full px-5 py-1"
+            >
+              Log Out
+            </button>
+          </div>
+        </div>
       </div>
+
       <button
         id="open-aside"
         class="md:hidden ml-auto aspect-square flex max-h-10 cursor-pointer transition active:scale-90 hover:border-slate-100 rounded-sm border-2 hover:shadow-md border-transparent"
@@ -97,19 +121,24 @@
             alt="close_aside"
           />
         </button>
-        <a href="./authorization.html?form=reg" class="w-full flex">
+        <a href="./authorization.html?form=reg" class="auth w-full flex">
           <button
             class="bg-red-500 p-3 rounded-md text-white w-full cursor-pointer shadow-md transition-all hover:bg-amber-300 active:bg-amber-300 active:text-black hover:text-black"
           >
             Sign Up
           </button>
         </a>
-        <a href="./authorization.html?form=login" class="w-full flex">
+        <a href="./authorization.html?form=login" class="auth w-full flex">
           <button
             class="bg-amber-300 p-3 rounded-md text-black w-full cursor-pointer shadow-md transition-all hover:bg-red-500 active:bg-red-500 active:text-white hover:text-white"
           >
             Login
           </button>
+        </a>
+        <a href="./user_page.html" class="user w-full flex">
+          <button
+            class="user-block bg-white p-3 rounded-md text-black w-full cursor-pointer shadow-md transition-all hover:bg-slate-700 active:bg-slate-700 active:text-white hover:text-white"
+          ></button>
         </a>
         <ul class="flex flex-col gap-5 text-white work-sans">
           <a href="#">
@@ -418,7 +447,7 @@
       </p>
     </footer>
 
-    <script src="./scripts/main_form.js"></script>
+    <script src="./scripts/main_form.js" type="module"></script>
     <script src="./scripts/aside_menu.js"></script>
   </body>
 </html>

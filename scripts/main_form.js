@@ -1,4 +1,44 @@
+import Auth from "./auth_page/check_auth.js";
+
 document.addEventListener("DOMContentLoaded", () => {
+  const currentUser = Auth.check();
+  const authBtns = document.querySelectorAll(".auth"),
+    userBtns = document.querySelectorAll(".user"),
+    userBlocks = document.querySelectorAll(".user-block");
+  const logOutBtn = document.getElementById("logOut");
+  logOutBtn.onclick = () => {
+    Auth.logOut();
+    location.reload();
+  };
+
+  if (currentUser) {
+    userBlocks.forEach((user) => {
+      user.textContent = currentUser;
+    });
+    userBtns.forEach((btn) => {
+      btn.classList.remove("hidden");
+      btn.classList.add("flex");
+    });
+    authBtns.forEach((btn) => {
+      btn.classList.add("hidden");
+      btn.classList.remove("flex");
+    });
+  } else {
+    userBtns.forEach((btn) => {
+      btn.classList.add("hidden");
+      btn.classList.remove("flex");
+    });
+    authBtns.forEach((btn) => {
+      btn.classList.remove("hidden");
+      btn.classList.add("flex");
+    });
+  }
+
+  const userSubmenu = document.querySelector(".user-submenu");
+  userBlocks[0].addEventListener("click", () => {
+    userSubmenu.classList.toggle("h-20");
+  });
+
   const searchHotelForm = document.querySelector("form");
   const sendFormBtn = document.querySelector("form button");
   const formInputs = searchHotelForm.querySelectorAll("input");

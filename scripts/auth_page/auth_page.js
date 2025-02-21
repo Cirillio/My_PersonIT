@@ -1,4 +1,11 @@
+import Auth from "./check_auth.js";
+
 document.addEventListener("DOMContentLoaded", () => {
+  if (Auth.check()) {
+    window.location.href = "index.html";
+    return;
+  }
+
   const urlParams = new URLSearchParams(window.location.search);
   const formParam = urlParams.get("form");
 

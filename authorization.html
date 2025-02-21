@@ -169,10 +169,11 @@
               >Username:</label
             >
             <input
+              autocomplete="off"
               type="text"
               id="register_username"
               name="register_username"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-grey-600"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
             />
             <label for="phone" class="work-sans font-light text-xl"
               >Phone:</label
@@ -181,7 +182,7 @@
               type="tel"
               id="register_phone"
               name="register_phone"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
               placeholder="+7-996-099-11-01"
             />
             <label for="password" class="work-sans font-light text-xl"
@@ -192,7 +193,7 @@
               type="password"
               id="register_password"
               name="register_password"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
             />
             <label for="confirm_password" class="work-sans font-light text-xl"
               >Confirm Password:</label
@@ -202,7 +203,7 @@
               type="password"
               id="confirm_password"
               name="confirm_password"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
             />
             <div class="flex justify-between">
               <button
@@ -258,7 +259,7 @@
               type="text"
               id="login_username"
               name="login_username"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
             />
             <label for="password" class="work-sans font-light text-xl"
               >Password:</label
@@ -267,7 +268,7 @@
               type="password"
               id="login_password"
               name="login_password"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition focus:border-gray-600"
+              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
               autocomplete="true"
             />
             <button
@@ -420,7 +421,7 @@
         Designed and developed by 24Hotel Team.
       </p>
     </footer>
-    <script src="./scripts/auth_page/auth_page.js"></script>
+    <script src="./scripts/auth_page/auth_page.js" type="module"></script>
     <script src="./scripts/auth_page/reg_form.js" type="module"></script>
     <script src="./scripts/auth_page/login_form.js" type="module"></script>
     <script src="./scripts/aside_menu.js"></script>

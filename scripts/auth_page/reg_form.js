@@ -3,14 +3,13 @@ import {
   debounce,
   includes,
   remove,
+  every,
 } from "https://cdn.jsdelivr.net/npm/lodash-es/lodash.min.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const regForm = document.querySelector(".register"),
     regSubmit = document.querySelector("#register_submit"),
     regTroubles = document.querySelector("#register_trouble");
-
-  let formValid = true;
 
   Error.btn = regSubmit;
 
@@ -21,11 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let wrongList = [];
   const wrongNameMsg =
-      "Имя должно содержать только буквы и быть больше 3 символов",
-    wrongPhoneMsg = "Телефон указан неверно",
+      "Name must contain only letters and be longer than 3 characters",
+    wrongPhoneMsg = "Phone number is invalid",
     wrongPassMsg =
-      "Пароль должен содержать минимум 8 символов, включая заглавные и строчные буквы и цифры",
-    unequalPassMsg = "Пароли не совпадают";
+      "Password must be at least 8 characters long and include uppercase and lowercase letters and numbers",
+    unequalPassMsg = "Passwords do not match",
+    usernameExistsMsg = "Such a user already exists",
+    phoneExistsMsg = "Such a phone already uses";
+
+  function inputErrorToggle(target, toggle) {
+    if (toggle) {
+      target.classList.add("border-gray-300");
+      target.classList.remove("border-red-500");
+    } else {
+      target.classList.remove("border-gray-300");
+      target.classList.add("border-red-500");
+    }
+  }
 
   const validateName = () => {
     const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{3,}$/;
@@ -71,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const validateConfirmPassword = () => {
     const valid = regPass.value === regConfirm.value;
-    console.log(valid);
     if (valid) {
       inputErrorToggle(regConfirm, true);
       remove(wrongList, (item) => item === unequalPassMsg);
@@ -82,16 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
   };
-
-  function inputErrorToggle(target, toggle) {
-    if (toggle) {
-      target.classList.add("border-gray-300");
-      target.classList.remove("border-red-500");
-    } else {
-      target.classList.remove("border-gray-300");
-      target.classList.add("border-red-500");
-    }
-  }
 
   regName.addEventListener(
     "input",
@@ -108,39 +108,82 @@ document.addEventListener("DOMContentLoaded", () => {
     debounce(() => validatePassword(), 500)
   );
 
+  function runValidations() {
+    const valid = every(
+      [
+        validateName(),
+        validatePhone(),
+        validatePassword(),
+        validateConfirmPassword(),
+      ],
+      (fn) => fn
+    );
+
+    if (!valid) throw "wrong form";
+  }
+
+  function validUser(user) {
+    const users = getUsers();
+
+    remove(wrongList, (item) => item === usernameExistsMsg);
+    remove(wrongList, (item) => item === phoneExistsMsg);
+
+    if (users.some((u) => u.username === user.username)) {
+      console.error("name uses");
+      inputErrorToggle(regName, false);
+      if (!includes(wrongList, usernameExistsMsg))
+        wrongList.push(usernameExistsMsg);
+      throw "That name has already been taken";
+    } else if (users.some((u) => u.phone === user.phone)) {
+      console.error("phone uses");
+      inputErrorToggle(regPhone, false);
+      if (!includes(wrongList, phoneExistsMsg)) wrongList.push(phoneExistsMsg);
+      throw "That phone has already been used";
+    }
+  }
+
   regSubmit.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
 
-    const valid =
-      validateName() &&
-      validatePhone() &&
-      validatePassword() &&
-      validateConfirmPassword();
+    try {
+      runValidations();
 
-    if (!valid) {
-      Error.list = wrongList;
-      Error.show();
-    } else {
       const user = {
         username: regName.value,
         phone: regPhone.value,
         pass: regPass.value,
       };
 
-      register(user);
-
-      regName.value = "";
-      regPhone.value = "";
-      regPass.value = "";
-      regConfirm.value = "";
-
-      // Submit the form or perform further actions
+      validUser(user);
+      addUser(user);
+      clearForm();
+      window.location.href = "index.html";
+    } catch (error) {
+      Error.list = wrongList;
+      Error.show();
     }
   });
 
-  function register(user) {
-    console.log(JSON.stringify(user));
+  function getUsers() {
+    const users = localStorage.getItem("users");
+
+    return users ? JSON.parse(users) : [];
+  }
+
+  function addUser(user) {
+    const users = getUsers();
+    users.push(user);
+    console.table(users);
+    localStorage.setItem("users", JSON.stringify(users));
+    sessionStorage.setItem("currentUser", user.username);
+  }
+
+  function clearForm() {
+    regName.value = "";
+    regPhone.value = "";
+    regPass.value = "";
+    regConfirm.value = "";
   }
 
   document.onclick = () => {
