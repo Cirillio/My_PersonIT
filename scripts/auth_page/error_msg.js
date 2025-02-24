@@ -1,9 +1,34 @@
+import {
+  includes,
+  remove,
+} from "https://cdn.jsdelivr.net/npm/lodash-es/lodash.min.js";
+
 const wrongForm = document.getElementById("wrong_form");
 let formBtn = null;
 let wrongLoad = null;
 let errorMsgTimeout;
 let errorHideTimeout;
 let errors = [];
+
+const errorMsg = {
+  name: "Name must contain only letters and be longer than 3 characters. Or use another name",
+  phone: "Phone number is invalid. Or use another phone",
+  password:
+    "Password must be at least 8 characters long and include uppercase and lowercase letters and numbers",
+  confirm: "Passwords do not match",
+  loginName: "User not found",
+  loginPass: "Incorrect password",
+};
+
+function addError(input_name) {
+  const error = errorMsg[input_name];
+  if (!includes(errors, error)) errors.push(error);
+}
+
+function removeError(input_name) {
+  const error = errorMsg[input_name];
+  remove(errors, (item) => item === error);
+}
 
 function showErrorMsgs() {
   if (!formBtn) console.log("button to submit not added");
@@ -53,6 +78,12 @@ function clearWrongForm() {
 }
 
 const Error = {
+  get error() {
+    return errorMsg;
+  },
+  set error(newError) {
+    errorMsg = newError;
+  },
   get btn() {
     return formBtn;
   },
@@ -65,6 +96,8 @@ const Error = {
   set list(newErrors) {
     errors = newErrors;
   },
+  add: addError,
+  remove: removeError,
   show: showErrorMsgs,
   hide: hideErrorMsgs,
 };

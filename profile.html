@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,32 +16,14 @@
       rel="stylesheet"
     />
 
-    <title>24Hotel - Auth</title>
+    <title></title>
 
     <script src="./scripts/jquery-3.7.1.min.js"></script>
     <script src="./scripts/parallax.js"></script>
-    <script src="./scripts/core.min.js"></script>
 
     <link rel="stylesheet" href="./src/output.css" />
     <link rel="stylesheet" href="./styles/base.css" />
-
-    <style>
-      .error_load {
-        height: 2px;
-        background-color: red;
-        border-radius: var(--radius-sm);
-        animation: shrinkWidth 5s forwards;
-      }
-
-      @keyframes shrinkWidth {
-        from {
-          width: 100%;
-        }
-        to {
-          width: 0;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./styles/input_date.css" />
   </head>
   <body>
     <header
@@ -131,178 +111,168 @@
       <section class="parallax h-full w-full">
         <div
           data-parallax="scroll"
-          data-image-src="./img/auth_bg.jpg"
+          data-image-src="./img/profile.jpg"
           class="parallax-window h-full w-full"
         ></div>
       </section>
 
       <div
-        id="wrong_form"
-        class="absolute z-30 w-full sm:w-fit left-1/2 -top-60 -translate-x-1/2 h-fit transition-all flex flex-col gap-2 duration-500 rounded-md shadow-md bg-slate-100 text-red-500 border-3 border-transparent space-mono"
-      ></div>
-      <div
-        class="reg-form hidden md:flex-row flex-col md:w-[800px] sm:w-[500px] w-full md:h-[500px] h-dvh justify-center absolute right-1/2 translate-x-1/2 top-1/2 -translate-y-1/2 bg-slate-100 shadow-md shadow-neutral-600 md:rounded-md"
+        class="absolute work-sans w-full sm:w-fit left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all overflow-hidden flex sm:flex-row flex-col rounded-md shadow-md bg-slate-100"
       >
-        <div class="lflex-3/7 h-full flex overflow-hidden rounded-sm">
-          <img
-            src="./img/reg.jpg"
-            alt="auth-img"
-            class="w-full contrast-90 object-cover"
-          />
-        </div>
-        <div class="flex-4/7 flex gap-2 flex-col px-10 md:px-5 py-5">
-          <h2 class="space-mono text-3xl text-end font-bold select-none">
-            registration
-          </h2>
+        <div class="flex flex-col text-xl bg-slate-200 h-fit">
           <button
-            id="toggle-login"
-            class="work-sans w-fit ml-auto underline text-neutral-500 cursor-pointer select-none"
+            class="switch-btn pl-5 pr-20 cursor-pointer py-3 bg-slate-400 hover:bg-slate-300 transition"
           >
-            Already have account?
+            Profile
           </button>
-          <form
-            action="/register"
-            method="POST"
-            class="register flex flex-col gap-2 sm:px-10 work-sans"
+          <div class="w-full bg-neutral-500 h-[1px]"></div>
+          <button
+            class="switch-btn pl-5 pr-20 cursor-pointer py-3 hover:bg-slate-300 transition"
           >
-            <label for="username" class="work-sans font-light text-xl"
-              >Username:</label
-            >
+            Security
+          </button>
+          <div class="w-full bg-neutral-500 h-[1px]"></div>
+          <button
+            class="switch-btn pl-5 pr-20 cursor-pointer py-3 hover:bg-slate-300 transition"
+          >
+            Support
+          </button>
+        </div>
+        <div
+          id="profile"
+          class="menu flex flex-col sm:w-fit w-full sm:px-10 px-2 py-5 sm:border-l border-t sm:border-t-0 border-slate-500"
+        >
+          <h2 class="text-3xl font-bold mb-8 w-fit">Profile</h2>
+          <form class="profile flex flex-col text-xl w-full">
+            <label for="name">Name</label>
             <input
-              autocomplete="off"
               type="text"
-              id="register_username"
               name="name"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
+              disabled
+              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
             />
-            <label for="phone" class="work-sans font-light text-xl"
-              >Phone:</label
-            >
+
+            <label for="phone">Phone</label>
             <input
               type="tel"
-              id="register_phone"
               name="phone"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
-              placeholder="+7-996-099-11-01"
+              disabled
+              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
             />
-            <label for="password" class="work-sans font-light text-xl"
-              >Password:</label
-            >
+
+            <label for="email">Email for notifications</label>
             <input
-              autocomplete="new_password"
-              type="password"
-              id="register_password"
-              name="password"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
+              type="email"
+              name="email"
+              disabled
+              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
             />
-            <label for="confirm_password" class="work-sans font-light text-xl"
-              >Confirm Password:</label
-            >
-            <input
-              autocomplete="true"
-              type="password"
-              id="confirm_password"
-              name="confirm"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
-            />
-            <div class="flex justify-between">
+
+            <div class="flex gap-5 w-fit ml-auto sm:ml-o">
               <button
-                id="register_submit"
-                type="submit"
-                class="bg-red-500 w-fit disabled:cursor-default disabled:hover:bg-red-500 text-white py-2 px-5 rounded-md hover:bg-red-600 cursor-pointer transition"
+                id="editProfile"
+                class="hover:underline font-semibold cursor-pointer w-fit"
               >
-                Register
+                Edit
               </button>
               <button
-                id="register_trouble"
-                class="bg-amber-300 w-fit disabled:cursor-default disabled:hover:bg-amber-300 text-black py-2 px-5 rounded-md hover:bg-amber-400 cursor-pointer transition"
+                id="saveProfile"
+                disabled
+                class="hover:underline disabled:hover:no-underline font-semibold cursor-pointer w-fit opacity-100"
               >
-                Troubles?
+                Save
               </button>
             </div>
           </form>
-        </div>
-      </div>
-
-      <!--  -->
-
-      <div
-        class="login-form hidden md:flex-row flex-col md:w-[800px] sm:w-[500px] w-full md:h-[500px] h-dvh justify-center absolute left-[200%] -translate-x-1/2 top-1/2 -translate-y-1/2 bg-slate-100 shadow-md shadow-neutral-600 rounded-md"
-      >
-        <div class="flex-3/7 h-full flex overflow-hidden rounded-sm">
-          <img
-            src="./img/auth.jpg"
-            alt="auth-img"
-            class="w-full contrast-75 brightness-110 object-cover"
-          />
-        </div>
-        <div class="flex-4/7 flex gap-2 flex-col sm:px-5 px-10 py-5">
-          <h2 class="space-mono text-3xl text-end font-bold select-none">
-            authorization
-          </h2>
           <button
-            id="toggle-reg"
-            class="work-sans w-fit ml-auto underline text-neutral-500 cursor-pointer select-none"
+            class="bg-red-400 hover:bg-red-500 transition ml-auto sm:ml-0 px-5 py-2 w-fit mt-5 text-white cursor-pointer rounded-md"
           >
-            There is no account yet?
+            Log Out
           </button>
-
-          <form
-            action="/login"
-            method="POST"
-            class="login flex flex-col gap-2 sm:px-10 work-sans mt-8"
-          >
-            <label for="username" class="work-sans font-light text-xl"
-              >Login:</label
-            >
+        </div>
+        <div
+          id="security"
+          class="menu hidden flex-col sm:w-fit w-full sm:px-10 px-2 py-5 sm:border-l border-t sm:border-t-0 border-slate-500"
+        >
+          <h2 class="text-3xl font-bold mb-8 w-fit">Security</h2>
+          <form class="profile flex flex-col text-xl w-full">
+            <label for="name">Name</label>
             <input
               type="text"
-              id="login_username"
-              name="loginName"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
+              name="name"
+              disabled
+              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
             />
-            <label for="password" class="work-sans font-light text-xl"
-              >Password:</label
-            >
-            <input
-              type="password"
-              id="login_password"
-              name="loginPass"
-              class="p-2 border disabled:bg-slate-200 border-gray-300 rounded-md transition"
-              autocomplete="true"
-            />
-            <button
-              id="login_submit"
-              type="submit"
-              class="mt-4 bg-red-500 w-fit disabled:cursor-default disabled:hover:bg-red-500 text-white py-2 px-5 rounded-md hover:bg-red-600 cursor-pointer transition"
-            >
-              Sign in
-            </button>
-          </form>
 
-          <button
-            id="recover_toggle"
-            class="sm:ml-10 space-mono bg-amber-300 hover:bg-amber-400 transition rounded-sm text-slate-700 px-5 py-2 cursor-pointer w-fit"
-          >
-            forgot password?
-          </button>
-          <div
-            class="recover sm:px-10 gap-2 flex sm:flex-row flex-col w-full transition-all opacity-0"
-          >
+            <label for="phone">Phone</label>
             <input
-              id="recover_tel"
-              name="phone"
-              class="p-2 border border-red-500 rounded-md transition focus:border-gray-900"
               type="tel"
-              placeholder="+7-996-099-11-01"
+              name="phone"
+              disabled
+              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
             />
+
+            <label for="email">Email for notifications</label>
+            <input
+              type="email"
+              name="email"
+              disabled
+              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
+            />
+
+            <div class="flex gap-5 w-fit ml-auto sm:ml-o">
+              <button
+                id="editProfile"
+                class="hover:underline font-semibold cursor-pointer w-fit"
+              >
+                Edit
+              </button>
+              <button
+                id="saveProfile"
+                disabled
+                class="hover:underline disabled:hover:no-underline font-semibold cursor-pointer w-fit opacity-100"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+          <button
+            class="bg-red-400 hover:bg-red-500 transition ml-auto sm:ml-0 px-5 py-2 w-fit mt-5 text-white cursor-pointer rounded-md"
+          >
+            Log Out
+          </button>
+        </div>
+        <div
+          id="support"
+          class="menu hidden flex-col sm:w-fit w-full sm:px-10 px-2 py-5 sm:border-l border-t sm:border-t-0 border-slate-500"
+        >
+          <h2 class="text-3xl font-bold mb-8 w-fit">Support</h2>
+          <form class="profile flex flex-col text-xl w-full">
+            <label for="help" class="mb-5">Text your problem:</label>
+            <textarea
+              name="help"
+              id="textRequest"
+              class="p-3 text-lg border w-full sm:w-fit focus:bg-white focus:shadow-md shadow-none focus:border-gray-400 border-gray-300 rounded-md space-mono resize-none min-h-[200px] transition"
+            ></textarea>
+
             <button
-              id="recover_submit"
-              class="space-mono bg-red-500 hover:bg-red-600 transition rounded-sm text-white px-5 py-2 cursor-pointer w-fit"
+              id="sendRequest"
+              class="bg-amber-400 hover:bg-amber-500 transition ml-auto sm:ml-0 px-5 py-2 w-fit mt-5 text-black cursor-pointer rounded-md"
             >
-              recover
+              Send
             </button>
-          </div>
+
+            <label for="callRequest">Or call:</label>
+            <a href="tel:+380501234567" class="">
+              <input
+                type="tel"
+                name="callRequest"
+                readonly
+                value="+380501234567"
+                class="p-2 border w-full sm:w-fit border-gray-300 rounded-md cursor-pointer text-center hover:bg-slate-300 active:bg-slate-300 transition bg-slate-200"
+              />
+            </a>
+          </form>
         </div>
       </div>
     </main>
@@ -422,9 +392,8 @@
         Designed and developed by 24Hotel Team.
       </p>
     </footer>
-    <script src="./scripts/auth_page/auth_page.js" type="module"></script>
-    <script src="./scripts/auth_page/reg_form.js" type="module"></script>
-    <script src="./scripts/auth_page/login_form.js" type="module"></script>
+
+    <script src="./scripts/profile_page/profile_page.js" type="module"></script>
     <script src="./scripts/aside_menu.js"></script>
   </body>
 </html>

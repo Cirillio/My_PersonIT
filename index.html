@@ -76,7 +76,7 @@
           <div
             class="user-submenu transition-all absolute h-0 left-1/2 -translate-x-1/2 top-full w-fit bg-white rounded-md shadow-md text-black space-mono flex flex-col overflow-hidden"
           >
-            <a href="./user_page.html" class="flex h-full w-full">
+            <a href="./profile.html" class="flex h-full w-full">
               <button
                 class="hover:cursor-pointer hover:bg-slate-200 transition-all px-5 py-1"
               >
@@ -135,7 +135,7 @@
             Login
           </button>
         </a>
-        <a href="./user_page.html" class="user w-full flex">
+        <a href="./profile.html" class="user w-full flex">
           <button
             class="user-block bg-white p-3 rounded-md text-black w-full cursor-pointer shadow-md transition-all hover:bg-slate-700 active:bg-slate-700 active:text-white hover:text-white"
           ></button>
@@ -191,10 +191,15 @@
               placeholder="For example, Moscow"
               autocomplete="off"
             />
-            <ul
-              id="destination-list"
-              class="absolute z-20 rounded-md work-sans h-0 overflow-y-scroll gap-2 flex transition-all flex-col justify-around left-0 top-[100%] w-full bg-white text-xl"
-            ></ul>
+            <div
+              id="destinations-block"
+              class="absolute max-h-60 hidden rounded-md overflow-y-scroll z-20 left-0 top-[100%] w-full bg-white"
+            >
+              <ul
+                id="destination-list"
+                class="h-auto gap-2 flex flex-col justify-around w-full work-sans"
+              ></ul>
+            </div>
           </div>
 
           <div class="flex gap-2 sm:flex-2 w-full sm:w-fit flex-wrap">

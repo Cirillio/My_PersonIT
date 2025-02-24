@@ -1,4 +1,4 @@
-import Auth from "./check_auth.js";
+import Auth from "./auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (Auth.check()) {

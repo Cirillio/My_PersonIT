@@ -1,4 +1,4 @@
-import Auth from "./auth_page/check_auth.js";
+import Auth from "./auth_page/auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const currentUser = Auth.check();
@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     userBtns = document.querySelectorAll(".user"),
     userBlocks = document.querySelectorAll(".user-block");
   const logOutBtn = document.getElementById("logOut");
+
   logOutBtn.onclick = () => {
     Auth.logOut();
     location.reload();
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (currentUser) {
     userBlocks.forEach((user) => {
-      user.textContent = currentUser;
+      user.textContent = currentUser.username;
     });
     userBtns.forEach((btn) => {
       btn.classList.remove("hidden");
@@ -44,39 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const formInputs = searchHotelForm.querySelectorAll("input");
 
   const destinationField = document.getElementById("destination");
+  const destinationsBlock = document.getElementById("destinations-block");
   const destinationFieldValueList = document.getElementById("destination-list");
   const destinationsFieldValues = [];
-
-  const guestsField = document.querySelector("#guests input");
-  const guestsFieldValueList = document.querySelector("#guests ul");
-  const guestsFieldValues = guestsFieldValueList.querySelectorAll("li");
-
-  function formBlackBG(event) {
-    const isTargetInForm =
-      event.target === searchHotelForm ||
-      Array.from(formInputs).some((input) => event.target === input) ||
-      Array.from(guestsFieldValues).some((item) => event.target === item) ||
-      event.target === sendFormBtn;
-
-    searchHotelForm.style.backgroundColor = isTargetInForm
-      ? "black"
-      : "var(--main-input)";
-  }
-
-  searchHotelForm.onclick = formBlackBG;
-
-  let checkForm = true;
-
-  destinationField.addEventListener("input", () => {
-    const value = destinationField.value.trim();
-    const isValid = /^[a-zA-Zа-яА-Я0-\9s,.-]+$/.test(value);
-
-    if (!isValid) {
-      inputIncorrect(destinationField);
-    } else {
-      inputCorrect(destinationField);
-    }
-  });
 
   const destination_List = [
     "Москва, ул. Тверская, 13",
@@ -101,24 +72,80 @@ document.addEventListener("DOMContentLoaded", () => {
     "Уфа, ул. Октябрьская, 10",
   ];
 
-  destination_List.forEach((destination) => {
+  const guestsField = document.querySelector("#guests input");
+  const guestsFieldValueList = document.querySelector("#guests ul");
+  const guestsFieldValues = guestsFieldValueList.querySelectorAll("li");
+
+  function formBlackBG(event) {
+    const isTargetInForm =
+      event.target === searchHotelForm ||
+      Array.from(formInputs).some((input) => event.target === input) ||
+      Array.from(guestsFieldValues).some((item) => event.target === item) ||
+      event.target === sendFormBtn;
+
+    searchHotelForm.style.backgroundColor = isTargetInForm
+      ? "black"
+      : "var(--main-input)";
+  }
+
+  searchHotelForm.onclick = formBlackBG;
+
+  let checkForm = true;
+
+  destinationField.addEventListener("input", () => {
+    const value = destinationField.value;
+    const isValid = /^[a-zA-Zа-яА-Я0-\9s, .-]+$/.test(value.trim());
+    const foundItems = destination_List.filter((item) =>
+      item.toLowerCase().includes(value.toLowerCase())
+    );
+
+    if (foundItems) {
+      destinationFieldValueList.innerHTML = "";
+      foundItems.forEach((destination) => {
+        addDestinations(destination);
+      });
+    }
+
+    if (value == "") {
+      destinationFieldValueList.innerHTML = "";
+      destination_List.forEach((destination) => {
+        addDestinations(destination);
+      });
+    }
+
+    if (!isValid || !destination_List.includes(value)) {
+      inputIncorrect(destinationField);
+    } else {
+      inputCorrect(destinationField);
+    }
+  });
+
+  function addDestinations(destination) {
     const li = document.createElement("li");
     li.classList.add("input-li");
     li.textContent = destination;
     li.setAttribute("data-value", destination);
     destinationFieldValueList.appendChild(li);
     destinationsFieldValues.push(li);
+    li.onclick = () => {
+      destinationField.value = destination;
+      inputCorrect(destinationField);
+    };
+  }
+
+  destination_List.forEach((destination) => {
+    addDestinations(destination);
   });
 
   function openDestinationsList(event) {
     event.stopPropagation();
-    destinationFieldValueList.classList.remove("h-0");
-    destinationFieldValueList.classList.add("h-60");
+    destinationsBlock.classList.remove("hidden");
+    destinationsBlock.classList.add("flex");
   }
 
   function closeDestinationsList() {
-    destinationFieldValueList.classList.remove("h-60");
-    destinationFieldValueList.classList.add("h-0");
+    destinationsBlock.classList.remove("flex");
+    destinationsBlock.classList.add("hidden");
   }
 
   destinationsFieldValues.forEach((elem) => {

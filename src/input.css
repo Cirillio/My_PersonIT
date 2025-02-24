@@ -3,6 +3,6 @@
 
 @layer utilities {
   .input-li {
-    @apply cursor-pointer text-slate-700 px-5 transition-all border-y border-slate-100 hover:shadow-sm;
+    @apply cursor-pointer  text-slate-700 h-8 text-xl bg-white px-5 transition-all border-y border-slate-100 hover:shadow-sm;
   }
 }
