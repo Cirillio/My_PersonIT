@@ -59,8 +59,4 @@ document.addEventListener("DOMContentLoaded", () => {
     regPass.value = "";
     regConfirm.value = "";
   }
-
-  document.onclick = () => {
-    Error.hide();
-  };
 });

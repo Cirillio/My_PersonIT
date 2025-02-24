@@ -117,6 +117,11 @@
       </section>
 
       <div
+        id="wrong_form"
+        class="absolute z-50 w-full sm:w-fit left-1/2 -top-60 -translate-x-1/2 h-fit transition-all flex flex-col gap-2 duration-500 rounded-md shadow-md bg-slate-100 text-red-500 border-3 border-transparent space-mono"
+      ></div>
+
+      <div
         class="absolute work-sans w-full sm:w-fit left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all overflow-hidden flex sm:flex-row flex-col rounded-md shadow-md bg-slate-100"
       >
         <div class="flex flex-col text-xl bg-slate-200 h-fit">
@@ -142,7 +147,6 @@
           id="profile"
           class="menu flex flex-col sm:w-fit w-full sm:px-10 px-2 py-5 sm:border-l border-t sm:border-t-0 border-slate-500"
         >
-          <h2 class="text-3xl font-bold mb-8 w-fit">Profile</h2>
           <form class="profile flex flex-col text-xl w-full">
             <label for="name">Name</label>
             <input
@@ -185,6 +189,7 @@
             </div>
           </form>
           <button
+            id="logOut"
             class="bg-red-400 hover:bg-red-500 transition ml-auto sm:ml-0 px-5 py-2 w-fit mt-5 text-white cursor-pointer rounded-md"
           >
             Log Out
@@ -194,41 +199,45 @@
           id="security"
           class="menu hidden flex-col sm:w-fit w-full sm:px-10 px-2 py-5 sm:border-l border-t sm:border-t-0 border-slate-500"
         >
-          <h2 class="text-3xl font-bold mb-8 w-fit">Security</h2>
           <form class="profile flex flex-col text-xl w-full">
-            <label for="name">Name</label>
+            <label for="old_password">Old password</label>
+            <input
+              autocomplete="on"
+              type="password"
+              name="old_password"
+              class="p-2 border w-full sm:w-fit border-gray-300 mb-4 rounded-md transition"
+            />
+
+            <label for="new_password">New password</label>
+            <input
+              autocomplete="on"
+              type="password"
+              name="new_password"
+              class="p-2 border w-full sm:w-fit border-gray-300 mb-4 rounded-md transition"
+            />
+
+            <label for="confirm_password">Confirm password</label>
+            <input
+              autocomplete="on"
+              type="password"
+              name="confirm_password"
+              class="p-2 border w-full sm:w-fit border-gray-300 mb-4 rounded-md transition"
+            />
+
+            <label for="code">Code</label>
             <input
               type="text"
-              name="name"
-              disabled
-              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
-            />
-
-            <label for="phone">Phone</label>
-            <input
-              type="tel"
-              name="phone"
-              disabled
-              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
-            />
-
-            <label for="email">Email for notifications</label>
-            <input
-              type="email"
-              name="email"
-              disabled
-              class="p-2 border w-full sm:w-fit disabled:bg-slate-200 border-gray-300 mb-4 rounded-md transition"
+              name="code"
+              class="p-2 border w-full sm:w-fit border-gray-300 mb-4 rounded-md transition"
             />
 
             <div class="flex gap-5 w-fit ml-auto sm:ml-o">
               <button
-                id="editProfile"
                 class="hover:underline font-semibold cursor-pointer w-fit"
               >
                 Edit
               </button>
               <button
-                id="saveProfile"
                 disabled
                 class="hover:underline disabled:hover:no-underline font-semibold cursor-pointer w-fit opacity-100"
               >
@@ -236,17 +245,11 @@
               </button>
             </div>
           </form>
-          <button
-            class="bg-red-400 hover:bg-red-500 transition ml-auto sm:ml-0 px-5 py-2 w-fit mt-5 text-white cursor-pointer rounded-md"
-          >
-            Log Out
-          </button>
         </div>
         <div
           id="support"
           class="menu hidden flex-col sm:w-fit w-full sm:px-10 px-2 py-5 sm:border-l border-t sm:border-t-0 border-slate-500"
         >
-          <h2 class="text-3xl font-bold mb-8 w-fit">Support</h2>
           <form class="profile flex flex-col text-xl w-full">
             <label for="help" class="mb-5">Text your problem:</label>
             <textarea
@@ -257,7 +260,7 @@
 
             <button
               id="sendRequest"
-              class="bg-amber-400 hover:bg-amber-500 transition ml-auto sm:ml-0 px-5 py-2 w-fit mt-5 text-black cursor-pointer rounded-md"
+              class="bg-amber-400 hover:bg-amber-500 mb-4 transition ml-auto sm:ml-0 px-5 py-2 w-fit mt-5 text-black cursor-pointer rounded-md"
             >
               Send
             </button>
@@ -269,7 +272,7 @@
                 name="callRequest"
                 readonly
                 value="+380501234567"
-                class="p-2 border w-full sm:w-fit border-gray-300 rounded-md cursor-pointer text-center hover:bg-slate-300 active:bg-slate-300 transition bg-slate-200"
+                class="py-2 border w-full sm:w-fit border-gray-300 rounded-md cursor-pointer text-center hover:bg-slate-300 active:bg-slate-300 transition bg-slate-200"
               />
             </a>
           </form>

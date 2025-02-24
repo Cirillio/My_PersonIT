@@ -16,6 +16,7 @@ const errorMsg = {
   password:
     "Password must be at least 8 characters long and include uppercase and lowercase letters and numbers",
   confirm: "Passwords do not match",
+  email: "Email is invalid. Or use another email",
   loginName: "User not found",
   loginPass: "Incorrect password",
 };
@@ -77,6 +78,10 @@ function clearWrongForm() {
   errors = [];
 }
 
+document.onclick = () => {
+  hideErrorMsgs();
+};
+
 const Error = {
   get error() {
     return errorMsg;
@@ -90,12 +95,7 @@ const Error = {
   set btn(newBtn) {
     formBtn = newBtn;
   },
-  get list() {
-    return errors;
-  },
-  set list(newErrors) {
-    errors = newErrors;
-  },
+
   add: addError,
   remove: removeError,
   show: showErrorMsgs,

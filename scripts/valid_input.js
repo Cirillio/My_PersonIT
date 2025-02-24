@@ -22,27 +22,28 @@ function toggleInput(input, valid) {
   }
 }
 
-const validateFindUser = (input) => {
+const checkName = (input) => {
   const users = Auth.getUsers();
   const valid = users.some((u) => u.username === input.value);
-  return toggleInput(input, valid);
+  return toggleInput(input, !valid);
 };
 
 const validateName = (input) => {
-  const users = Auth.getUsers();
-
   const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{3,}$/;
   const valid = nameRegex.test(input.value);
-
   return toggleInput(input, valid);
 };
+
+function checkPhone(input) {
+  const valid = Auth.getUsers().some((u) => u.phone === input.value);
+  return toggleInput(input, !valid);
+}
 
 const validatePhone = (input) => {
   const users = Auth.getUsers();
 
   const phoneRegex = /^\+?[78][-(]?\d{3}\)?[-]?\d{3}[-]?\d{2}[-]?\d{2}$/;
-  const valid =
-    phoneRegex.test(input.value) && !users.some((u) => u.phone === input.value);
+  const valid = phoneRegex.test(input.value);
 
   return toggleInput(input, valid);
 };
@@ -60,11 +61,25 @@ const validateConfirmPassword = (input_1, input_2) => {
   return toggleInput(input_2, valid);
 };
 
-function validateReg(name, phone, pass, confirm) {
+const validateEmail = (input) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const valid = emailRegex.test(input.value);
+  return toggleInput(input, valid);
+};
+
+const checkEmail = (input) => {
+  const users = Auth.getUsers();
+  const valid = users.some((u) => u.email === input.value);
+  return toggleInput(input, !valid);
+};
+
+const validateReg = (name, phone, pass, confirm) => {
   const valid = every(
     [
       validateName(name),
+      checkName(name),
       validatePhone(phone),
+      checkPhone(phone),
       validatePassword(pass),
       validateConfirmPassword(pass, confirm),
     ],
@@ -72,33 +87,34 @@ function validateReg(name, phone, pass, confirm) {
   );
 
   if (!valid) throw "Wrong form Error.";
-}
+};
 
 function validateLogin(name, pass) {
   const valid = every(
-    [validateName(name), validatePassword(pass), validateFindUser(name)],
+    [validateName(name), validatePassword(pass), !checkName(name)],
     (fn) => fn
   );
   const users = Auth.getUsers();
   const _user = users.find((u) => u.username === name.value);
-  if (!_user) {
-    toggleInput(name, false);
-    valid = false;
-  } else if (_user.pass !== pass.value) {
+  if (_user.pass !== pass.value) {
     toggleInput(pass, false);
     valid = false;
   }
-
   if (!valid) throw "Wrong form Error.";
 }
 
 const Valid = {
+  inputErrorToggle,
   validateName,
+  checkName,
   validatePhone,
+  checkPhone,
   validatePassword,
   validateConfirmPassword,
   validateReg,
   validateLogin,
+  validateEmail,
+  checkEmail,
 };
 
 export default Valid;
